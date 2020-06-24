@@ -27,7 +27,7 @@
     self.bgmManager = bgmManager;
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
     [self.touchView addGestureRecognizer:singleTap];
-    reverbArray = [NSArray arrayWithObjects:@"关闭混响", @"KTV", @"小房间", @"大会堂", @"低沉", @"洪亮", @"金属声", @"磁性", nil];
+    reverbArray = [NSArray arrayWithObjects:@"Off reverb", @"KTV", @"Small room", @"Town hall", @"Low", @"Loud", @"Metallic", @"Magnetic", nil];
     
     return self;
 }

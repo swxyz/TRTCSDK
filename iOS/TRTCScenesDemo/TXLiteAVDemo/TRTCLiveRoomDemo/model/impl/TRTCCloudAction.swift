@@ -118,7 +118,7 @@ class TRTCCloudAction: NSObject {
     
     func startPlay(userID: String, streamID: String?, view: UIView, usesCDN: Bool, roomId: String? = nil, callback: TRTCLiveRoomImpl.Callback? = nil) {
         if let _ = userPlayInfo[userID] {
-            callback?(-1, "请勿重复播放")
+            callback?(-1, "Do not repeat")
             return
         }
         
@@ -137,7 +137,7 @@ class TRTCCloudAction: NSObject {
             TRTCCloud.sharedInstance()?.startRemoteView(userID, view: view)
             DispatchQueue.main.asyncAfter(deadline: .now() + trtcLivePlayTimeOut) { [id = curRoomUUID] in
                 if id == self.curRoomUUID {
-                    self.playCallBack(userId: userID, code: -1, message: "超时未播放")
+                    self.playCallBack(userId: userID, code: -1, message: "Timeout not playing")
                 }
             }
         }
@@ -153,11 +153,11 @@ class TRTCCloudAction: NSObject {
         guard let userInfo = userPlayInfo[userId] else { return }
         if usesCDN {
             if let streamId = userInfo.streamId {
-                playCallBack(userId: streamId, code: -1, message: "停止播放")
+                playCallBack(userId: streamId, code: -1, message: "Stop play")
             }
             stopCdnPlay(userInfo.cdnPlayer)
         } else {
-            playCallBack(userId: userId, code: -1, message: "停止播放")
+            playCallBack(userId: userId, code: -1, message: "Stop play")
             TRTCCloud.sharedInstance()?.stopRemoteView(userId)
         }
         userPlayInfo[userId] = nil
@@ -278,7 +278,7 @@ private extension TRTCCloudAction {
         cdnPlayer.delegate = trtcCdnDelegate
         let result = cdnPlayer.startPlay(streamUrl, type: .PLAY_TYPE_LIVE_FLV)
         if result != 0 {
-            playCallBack(userId: streamId, code: Int(result), message: "播放失败")
+            playCallBack(userId: streamId, code: Int(result), message: "Play failed")
         }
     }
     

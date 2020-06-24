@@ -23,11 +23,11 @@
     func copy() -> VideoCallModel {
         let encoder = JSONEncoder()
         guard let data = try? encoder.encode(self) else {
-            fatalError("encode失败")
+            fatalError("encode failed")
         }
         let decoder = JSONDecoder()
         guard let target = try? decoder.decode(VideoCallModel.self, from: data) else {
-           fatalError("decode失败")
+           fatalError("decode failed")
         }
         return target
     }

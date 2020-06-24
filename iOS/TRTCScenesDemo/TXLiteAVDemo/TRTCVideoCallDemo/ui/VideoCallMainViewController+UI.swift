@@ -13,7 +13,7 @@ extension VideoCallMainViewController {
     func setupUI() {
         ToastManager.shared.position = .bottom
         view.backgroundColor = .appBackGround
-        title = "视频通话"
+        title = "Video call"
         setupNoHistoryView()
     }
     
@@ -43,7 +43,7 @@ extension VideoCallMainViewController {
         newTip.textAlignment = .center
         newTip.numberOfLines = 2
         newTip.text = """
-                        点击上方按钮发起呼叫
+                        Click the upper button to initiate a call
                        """
         noHistoryView.addSubview(newTip)
         newTip.snp.makeConstraints { (make) in

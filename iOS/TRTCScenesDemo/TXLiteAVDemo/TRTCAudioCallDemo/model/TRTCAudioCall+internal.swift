@@ -169,7 +169,8 @@ extension TRTCAudioCall {
         
         if realModel.action == .dialing {
             let offlineInfo = TIMOfflinePushInfo.init()
-            offlineInfo.desc = "您收到了一个语音通话请求"
+//            offlineInfo.desc = "您收到了一个语音通话请求"
+            offlineInfo.desc = "You received a voice call request"
             msg.setOfflinePushInfo(offlineInfo)
         }
         

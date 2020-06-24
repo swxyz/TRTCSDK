@@ -162,8 +162,8 @@
     
     UIButton *sendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     sendBtn.frame = CGRectMake(self.width - 15 - MSG_TEXT_SEND_BTN_WIDTH, (_msgInputView.height - MSG_TEXT_SEND_FEILD_HEIGHT)/2, MSG_TEXT_SEND_BTN_WIDTH, MSG_TEXT_SEND_FEILD_HEIGHT);
-    [sendBtn setTitle:@"发送" forState:UIControlStateNormal];
-    [sendBtn.titleLabel setFont:[UIFont systemFontOfSize:16]];
+    [sendBtn setTitle:@"Send" forState:UIControlStateNormal];
+    [sendBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [sendBtn setTitleColor:UIColorFromRGB(0x0ACCAC) forState:UIControlStateNormal];
     [sendBtn setBackgroundColor:[UIColor clearColor]];
     [sendBtn addTarget:self action:@selector(clickSend) forControlEvents:UIControlEventTouchUpInside];
@@ -177,7 +177,7 @@
     _msgInputFeild = [[UITextField alloc] initWithFrame:CGRectMake(msgInputFeildLine1.right + 10,sendBtn.y,msgInputFeildLine2.left - msgInputFeildLine1.right - 20,MSG_TEXT_SEND_FEILD_HEIGHT)];
     _msgInputFeild.backgroundColor = [UIColor clearColor];
     _msgInputFeild.returnKeyType = UIReturnKeySend;
-    _msgInputFeild.placeholder = @"和大家说点什么吧";
+    _msgInputFeild.placeholder = @"Say something to everyone";
     _msgInputFeild.delegate = self;
     _msgInputFeild.textColor = [UIColor blackColor];
     _msgInputFeild.font = [UIFont systemFontOfSize:14];
@@ -461,7 +461,7 @@
             TCMsgModel *msgModel = [[TCMsgModel alloc] init];
             msgModel.userId = info.imUserId;
             msgModel.userName = info.imUserName;
-            msgModel.userMsg  =  @"加入直播";
+            msgModel.userMsg  =  @"Join the live stream";
             msgModel.userHeadImageUrl = info.imUserIconUrl;
             msgModel.msgType = TCMsgModelType_MemberEnterRoom;
             
@@ -479,7 +479,7 @@
             TCMsgModel *msgModel = [[TCMsgModel alloc] init];
             msgModel.userId = info.imUserId;
             msgModel.userName = info.imUserName;
-            msgModel.userMsg  =  @"退出直播";
+            msgModel.userMsg  =  @"Exit live";
             msgModel.userHeadImageUrl = info.imUserIconUrl;
             msgModel.msgType = TCMsgModelType_MemberQuitRoom;
             
@@ -492,7 +492,7 @@
         case TCMsgModelType_Praise: {
             TCMsgModel *msgModel = [[TCMsgModel alloc] init];
             msgModel.userName = [info imUserName];
-            msgModel.userMsg  =  @"点了个赞";
+            msgModel.userMsg  =  @"Liked";
             msgModel.userHeadImageUrl = info.imUserIconUrl;
             msgModel.msgType = TCMsgModelType_Praise;
             
@@ -533,12 +533,12 @@
     NSString *textMsg = [textField.text stringByTrimmingCharactersInSet:[NSMutableCharacterSet whitespaceCharacterSet]];
     if (textMsg.length <= 0) {
         textField.text = @"";
-        [HUDHelper alert:@"消息不能为空"];
+        [HUDHelper alert:@"Message cannot be empty"];
         return YES;
     }
     
     TCMsgModel *msgModel = [[TCMsgModel alloc] init];
-    msgModel.userName = @"我";
+    msgModel.userName = @"Me";
     msgModel.userMsg  =  textMsg;
     msgModel.userHeadImageUrl = [[ProfileManager shared] curUserModel].avatar;
     

@@ -28,7 +28,7 @@
     self.bgmManager = bgmManager;
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
     [self.touchView addGestureRecognizer:singleTap];
-    voiceArray = [NSArray arrayWithObjects:@"关闭变声", @"熊孩子", @"萝莉", @"大叔", @"重金属", @"感冒",@"外国人", @"困兽", @"死肥仔", @"强电流", @"重机械", @"空灵", nil];
+    voiceArray = [NSArray arrayWithObjects:@"turn off voice changer", @"bear child", @"Lolita", @"uncle", @"heavy metal", @"cold",@"alien", @"trapped Beast", @"dead fat", @"strong current", @"heavy machinery", @" ethereal", nil];
     return self;
 }
 

@@ -33,31 +33,31 @@
 
 - (NSArray<NSString *> *)voiceChanger {
     return @[
-        @"关闭变声",
-        @"熊孩子",
-        @"萝莉",
-        @"大叔",
-        @"重金属",
-        @"感冒",
-        @"外国人",
-        @"困兽",
-        @"死肥仔",
-        @"强电流",
-        @"重机械",
-        @"空灵",
+        @"Turn off voice changer",
+        @"Bear child",
+        @"Lori",
+        @"Uncle",
+        @"Heavy metal",
+        @"Cold",
+        @"Foreigners",
+        @"Sleepy Beast",
+        @"Fat bastard",
+        @"Strong current",
+        @"Heavy machinery",
+        @"Ethereal",
     ];
 }
 
 - (NSArray<NSString *> *)reverbs {
     return @[
-        @"关闭混响",
+        @"Turn off reverb",
         @"KTV",
-        @"小房间",
-        @"大会堂",
-        @"低沉",
-        @"洪亮",
-        @"金属声",
-        @"磁性",
+        @"Small room",
+        @"General Assembly Hall",
+        @"Low",
+        @"Loud",
+        @"Metallic sound",
+        @"Magnetic",
     ];
 }
 
@@ -66,7 +66,7 @@
     
     __weak __typeof(self) wSelf = self;
     
-    self.bgmPlayoutVolumeItem = [[TRTCSettingsSliderItem alloc] initWithTitle:@"本地音量"
+    self.bgmPlayoutVolumeItem = [[TRTCSettingsSliderItem alloc] initWithTitle:@"Local volume"
                                             value:self.manager.bgmPlayoutVolume
                                               min:0
                                               max:100
@@ -76,7 +76,7 @@
         [wSelf onChangeBgmPlayoutVolume:(NSInteger) value];
     }];
     
-    self.bgmPublishVolumeItem = [[TRTCSettingsSliderItem alloc] initWithTitle:@"远程音量"
+    self.bgmPublishVolumeItem = [[TRTCSettingsSliderItem alloc] initWithTitle:@"Remote volume"
                                             value:self.manager.bgmPublishVolume
                                               min:0
                                               max:100
@@ -88,7 +88,7 @@
     
     self.items = @[
         [[TRTCBgmSettingsItem alloc] initWithTitle:@"BGM" bgmManager:self.manager],
-        [[TRTCSettingsSliderItem alloc] initWithTitle:@"BGM音量"
+        [[TRTCSettingsSliderItem alloc] initWithTitle:@"BGM volume"
                                                 value:self.manager.bgmVolume
                                                   min:0
                                                   max:100
@@ -99,7 +99,7 @@
         }],
         self.bgmPlayoutVolumeItem,
         self.bgmPublishVolumeItem,
-        [[TRTCSettingsSliderItem alloc] initWithTitle:@"MIC音量"
+        [[TRTCSettingsSliderItem alloc] initWithTitle:@"MIC volume"
                                                 value:self.manager.micVolume
                                                   min:0
                                                   max:100
@@ -108,13 +108,13 @@
                                                action:^(float value) {
             [wSelf onChangeMicVolume:(NSInteger) value];
         }],
-        [[TRTCSettingsSelectorItem alloc] initWithTitle:@"混响设置"
+        [[TRTCSettingsSelectorItem alloc] initWithTitle:@"Reverb settings"
                                                   items:[self reverbs]
                                           selectedIndex:self.manager.reverb
                                                  action:^(NSInteger index) {
             [wSelf onSelectReverbIndex:index];
         }],
-        [[TRTCSettingsSelectorItem alloc] initWithTitle:@"变声设置"
+        [[TRTCSettingsSelectorItem alloc] initWithTitle:@"Voice change settings"
                                                   items:[self voiceChanger]
                                           selectedIndex:self.manager.voiceChanger
                                                  action:^(NSInteger index) {

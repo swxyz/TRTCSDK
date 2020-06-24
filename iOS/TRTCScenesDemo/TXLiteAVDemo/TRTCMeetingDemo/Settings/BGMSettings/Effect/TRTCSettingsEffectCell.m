@@ -81,7 +81,7 @@
 - (void)didUpdateItem:(TRTCSettingsBaseItem *)item {
     if ([item isKindOfClass:[TRTCSettingsEffectItem class]]) {
         TRTCSettingsEffectItem *effectItem = (TRTCSettingsEffectItem *)item;
-        self.titleLabel.text = [NSString stringWithFormat:@"音效%@", @(effectItem.effect.params.effectId + 1)];
+        self.titleLabel.text = [NSString stringWithFormat:@"Effect%@", @(effectItem.effect.params.effectId + 1)];
         self.switcher.on = effectItem.effect.params.publish;
         self.slider.value = effectItem.effect.params.volume;
         [self observeEffectItem];

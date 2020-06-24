@@ -106,7 +106,7 @@ class VideoCallMainViewController: UIViewController, TRTCVideoCallDelegate {
     func onCallingCancel() {
         debugPrint("📳 onCallingCancel")
         if let vc = callVC {
-            view.makeToast("\((vc.curSponsor?.name) ?? "")通话取消")
+            view.makeToast("\((vc.curSponsor?.name) ?? "")Call canceled")
             vc.disMiss()
         }
     }
@@ -114,7 +114,7 @@ class VideoCallMainViewController: UIViewController, TRTCVideoCallDelegate {
     func onCallingTimeOut() {
         debugPrint("📳 onCallingTimeOut")
         if let vc = callVC {
-            view.makeToast("通话超时")
+            view.makeToast("Call timeout")
             vc.disMiss()
         }
     }
@@ -170,16 +170,16 @@ class VideoCallMainViewController: UIViewController, TRTCVideoCallDelegate {
                 var toast = "\(userInfo.name)"
                 switch reason {
                 case .reject:
-                    toast += "拒绝了通话"
+                    toast += "Rejected the call"
                     break
                 case .leave:
-                    toast += "离开了通话"
+                    toast += "Left the call"
                     break
                 case .noresp:
-                    toast += "未响应"
+                    toast += "No response"
                     break
                 case .busy:
-                    toast += "忙线"
+                    toast += "Busy line"
                     break
                 }
                 vc?.view.makeToast(toast)

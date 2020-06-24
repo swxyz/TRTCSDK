@@ -73,30 +73,31 @@
     _liveRoom = [[TRTCLiveRoomImpl alloc] init];
     
     __weak __typeof(self) wSelf = self;
+    
     self.mainMenuItems = @[
         [[MainMenuItem alloc] initWithIcon:[UIImage imageNamed:@"MenuMeeting"]
-                                     title:@"多人视频会议"
-                                   content:@"语音自动降噪、视频画质超高清，适用于在线会议、远程培训、小班课等场景"
+                                     title:@"Video conferencing"
+                                   content:@"Automatic voice noise reduction, ultra-high-definition video quality, suitable for scenes such as online meetings, remote training, small classes, etc."
                                   onSelect:^{ [wSelf gotoMeetingView]; }],
         [[MainMenuItem alloc] initWithIcon:[UIImage imageNamed:@"MenuVoiceRoom"]
-                                     title:@"语音聊天室"
-                                   content:@"内含变声、音效、伴奏、背景音乐等声音玩法，适用于闲聊房、K歌房和开黑房等场景"
+                                     title:@"Voice chat room"
+                                   content:@"Contains sound changes, sound effects, accompaniment, background music and other sounds, suitable for scenes such as chat rooms, karaoke rooms and open black rooms"
                                   onSelect:^{ [wSelf gotoVoiceRoomView]; }],
         [[MainMenuItem alloc] initWithIcon:[UIImage imageNamed:@"MenuLive"]
-                                     title:@"视频互动直播"
-                                   content:@"观众时延低至800ms，上下麦无需loading，适用于低延时、十万人高并发的大型互动直播"
+                                     title:@"Video live"
+                                   content:@"The audience delay is as low as 800ms, and loading and unloading is not required. It is suitable for large-scale interactive live broadcast with low latency and high concurrency of 100,000 people."
                                   onSelect:^{ [wSelf gotoLiveView]; }],
         [[MainMenuItem alloc] initWithIcon:[UIImage imageNamed:@"MenuAudioCall"]
-                                     title:@"语音通话"
-                                   content:@"48kHz高音质语音，60%丢包可正常语音，领先行业的3A处理，杜绝回声和啸叫"
+                                     title:@"Voice calls"
+                                   content:@"48kHz high-quality voice, 60% packet loss can be normal voice, leading industry 3A processing, to eliminate echo and howling"
                                   onSelect:^{ [wSelf gotoAudioCallView]; }],
         [[MainMenuItem alloc] initWithIcon:[UIImage imageNamed:@"MenuVideoCall"]
-                                     title:@"视频通话"
-                                   content:@"支持1080P超清视频，50%丢包率可正常视频，自备美颜特效，带来高品质视频通话体验"
+                                     title:@"Video call"
+                                   content:@"Support 1080P ultra-clear video, 50% packet loss rate can be normal video, bring your own beauty effects, bring high-quality video call experience"
                                   onSelect:^{ [wSelf gotoVideoCallView]; }]
     ];
     NSString *version = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-    self.versionLabel.text = [NSString stringWithFormat:@"腾讯云 TRTC v%@(%@)", [TRTCCloud getSDKVersion], version];
+    self.versionLabel.text = [NSString stringWithFormat:@"Tencent Cloud TRTC v%@(%@)", [TRTCCloud getSDKVersion], version];
 }
 
 - (void)dealloc {
@@ -116,7 +117,8 @@
     
     if (![[[TIMManager sharedInstance] getLoginUser] isEqual:userID]) {
         [[ProfileManager shared] IMLoginWithUserSig:userSig success:^{
-            [self makeToastWithMessage:@"登录IM成功"];
+//            [self makeToastWithMessage:@"登录IM成功"];
+            [self makeToastWithMessage:@"Login successful"];
             [[TRTCAudioCall shared] loginWithSdkAppID:SDKAPPID user:userID userSig:userSig success:^{
             } failed:^(NSInteger code, NSString *error) {
                 
@@ -145,7 +147,7 @@
                 
             }];
         } failed:^(NSString * error) {
-            [self makeToastWithMessage:@"登录IM失败"];
+            [self makeToastWithMessage:@"Login failed"];
         }];
     }
 }
@@ -176,11 +178,14 @@
 }
 
 - (IBAction)logout:(id)sender {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"确定要退出登录吗？" message:nil preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Are you sure you want to log out？" message:nil preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
     }];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [[ProfileManager shared] removeLoginCache];
         [[AppUtils shared] showLoginController];
         [[TIMManager sharedInstance] logout:^{

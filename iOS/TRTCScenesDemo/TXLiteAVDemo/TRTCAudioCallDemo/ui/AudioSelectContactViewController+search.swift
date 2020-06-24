@@ -34,7 +34,7 @@ extension AudioSelectContactViewController: UITextFieldDelegate, UISearchBarDele
         }) { [weak self] (error) in
             guard let self = self else {return}
             self.searchResult = nil
-            self.view.makeToast("查询失败")
+            self.view.makeToast("Query failed")
         }
     }
 }

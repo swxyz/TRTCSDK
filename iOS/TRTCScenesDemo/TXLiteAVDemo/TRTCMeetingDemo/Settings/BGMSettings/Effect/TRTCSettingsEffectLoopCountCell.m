@@ -33,7 +33,7 @@
         make.width.mas_equalTo(40);
     }];
 
-    self.stopButton = [UIButton trtc_cellButtonWithTitle:@"停止所有音效"];
+    self.stopButton = [UIButton trtc_cellButtonWithTitle:@"Stop all sound effects"];
     [self.stopButton addTarget:self action:@selector(onClickStopButton:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.contentView addSubview:self.stopButton];
@@ -75,7 +75,7 @@
 
 - (instancetype)initWithManager:(TRTCCustomAudioEffectManager *)manager {
     if (self = [super init]) {
-        self.title = @"循环次数";
+        self.title = @"Cycles";
         _manager = manager;
     }
     return self;

@@ -18,7 +18,7 @@
 @implementation TRTCMoreSettingsViewController
 
 - (NSString *)title {
-    return @"其它";
+    return @"Other";
 }
 
 - (void)viewDidLoad {
@@ -27,39 +27,39 @@
     TRTCVideoConfig *config = self.settingsManager.videoConfig;
     __weak __typeof(self) wSelf = self;
     self.items = @[
-        [[TRTCSettingsSegmentItem alloc] initWithTitle:@"流控方案"
-                                                 items:@[@"客户端控", @"云端流控"]
+        [[TRTCSettingsSegmentItem alloc] initWithTitle:@"Flow control"
+                                                 items:@[@"Client", @"Cloud"]
                                          selectedIndex:config.qosConfig.controlMode
                                                 action:^(NSInteger index) {
             [wSelf onSelectQosControlModeIndex:index];
         }],
-        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"开启双路编码"
+        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"Turn on dual encoding"
                                                  isOn:config.isSmallVideoEnabled
                                                action:^(BOOL isOn) {
             [wSelf onEnableSmallVideo:isOn];
         }],
-        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"默认观看低清"
+        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"Watch the low definition by default"
                                                  isOn:config.prefersLowQuality
                                                action:^(BOOL isOn) {
             [wSelf onEnablePrefersLowQuality:isOn];
         }],
-        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"开启重力感应"
+        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"Turn on gravity sensing"
                                                  isOn:config.isGSensorEnabled
                                                action:^(BOOL isOn) {
             [wSelf onEnableGSensor:isOn];
         }],
-        [[TRTCSettingsButtonItem alloc] initWithTitle:@"切换闪光灯" buttonTitle:@"切换" action:^{
+        [[TRTCSettingsButtonItem alloc] initWithTitle:@"Switch flash" buttonTitle:@"Switch" action:^{
             [wSelf onToggleTorchLight];
         }],
-        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"开启自动对焦"
+        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"Turn on autofocus"
                                                  isOn:config.isAutoFocusOn
                                                action:^(BOOL isOn) {
             [wSelf onEnableAutoFocus:isOn];
         }],
-        [[TRTCSettingsMessageItem alloc] initWithTitle:@"自定义消息" placeHolder:@"测试消息" action:^(NSString *message) {
+        [[TRTCSettingsMessageItem alloc] initWithTitle:@"Custom message" placeHolder:@"Test message" action:^(NSString *message) {
             [wSelf sendMessage:message];
         }],
-        [[TRTCSettingsMessageItem alloc] initWithTitle:@"SEI消息" placeHolder:@"测试SEI消息" action:^(NSString *message) {
+        [[TRTCSettingsMessageItem alloc] initWithTitle:@"SEI news" placeHolder:@"Test SEI messages" action:^(NSString *message) {
             [wSelf sendSeiMessage:message];
         }],
     ];

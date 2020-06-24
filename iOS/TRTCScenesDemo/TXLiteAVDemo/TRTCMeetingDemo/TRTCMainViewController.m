@@ -277,7 +277,7 @@
 }
 
 - (void)enterRoom {
-    [self toastTip:@"开始进房"];
+    [self toastTip:@"Start entering the room"];
     [self.settingsManager enterRoom];
     [_beautyPanel resetAndApplyValues];
 //    [_beautyPanel trigglerValues];
@@ -511,11 +511,11 @@
         [UIApplication sharedApplication].applicationState != UIApplicationStateActive;
     
     if (!isStartingRecordInBackgroundError) {
-        NSString *msg = [NSString stringWithFormat:@"发生错误: %@ [%d]", errMsg, errCode];
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"已退房"
+        NSString *msg = [NSString stringWithFormat:@"An error occurred: %@ [%d]", errMsg, errCode];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Checked out"
                                                                                  message:msg
                                                                           preferredStyle:UIAlertControllerStyleAlert];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"确定"
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK"
                                                             style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * _Nonnull action) {
             [self exitRoom];
@@ -526,31 +526,31 @@
 
 - (void)onEnterRoom:(NSInteger)result {
     if (result >= 0) {
-        [self toastTip:[NSString stringWithFormat:@"[%@]进房成功[%@]: elapsed[%@]",
+        [self toastTip:[NSString stringWithFormat:@"[%@]Successful entry[%@]: elapsed[%@]",
                         self.param.userId,
                         @(self.param.roomId),
                         @(result)]];
     } else {
         [self exitRoom];
-        [self toastTip:[NSString stringWithFormat:@"进房失败: [%ld]", (long)result]];
+        [self toastTip:[NSString stringWithFormat:@"Failed to enter: [%ld]", (long)result]];
     }
 }
 
 
 - (void)onExitRoom:(NSInteger)reason {
-    NSString *msg = [NSString stringWithFormat:@"离开房间[%@]: reason[%ld]", @(self.param.roomId), (long)reason];
+    NSString *msg = [NSString stringWithFormat:@"Leave the room[%@]: reason[%ld]", @(self.param.roomId), (long)reason];
     [self toastTip:msg];
 }
 
 - (void)onSwitchRole:(TXLiteAVError)errCode errMsg:(NSString *)errMsg {
     _linkMicSwitch = self.param.role == TRTCRoleAnchor;
     self.linkMicButton.selected = _linkMicSwitch;
-    [self toastTip:[NSString stringWithFormat:@"切换到%@身份",
-                    self.param.role == TRTCRoleAnchor ? @"主播" : @"观众"]];
+    [self toastTip:[NSString stringWithFormat:@"Switch to %@ Identity",
+                    self.param.role == TRTCRoleAnchor ? @"Host" : @"Audience"]];
 }
 
 - (void)onConnectOtherRoom:(NSString *)userId errCode:(TXLiteAVError)errCode errMsg:(NSString *)errMsg {
-    [self toastTip:[NSString stringWithFormat:@"连麦结果:%u %@", errCode, errMsg]];
+    [self toastTip:[NSString stringWithFormat:@"Results:%u %@", errCode, errMsg]];
     if (errCode != 0) {
         [self.remoteUserManager removeUser:userId];
     }
@@ -720,19 +720,19 @@
 }
 
 - (void)onScreenCaptureStarted {
-    [self toastTip:@"屏幕分享开始"];
+    [self toastTip:@"Screen sharing begins"];
 }
 
 - (void)onScreenCapturePaused:(int)reason {
-    [self toastTip:@"屏幕分享暂停"];
+    [self toastTip:@"Screen sharing pause"];
 }
 
 - (void)onScreenCaptureResumed:(int)reason {
-    [self toastTip:@"屏幕分享继续"];
+    [self toastTip:@"Screen sharing continues"];
 }
 
 - (void)onScreenCaptureStoped:(int)reason {
-    [self toastTip:@"屏幕分享中止: %@", @(reason)];
+    [self toastTip:@"Screen sharing aborted: %@", @(reason)];
 }
 
 - (UIImage*)imageForNetworkQuality:(TRTCQuality)quality
@@ -786,7 +786,7 @@
 - (void)onLoadPituStart
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self toastTip:@"开始加载资源"];
+        [self toastTip:@"Start loading resources"];
     });
 }
 - (void)onLoadPituProgress:(CGFloat)progress
@@ -798,13 +798,13 @@
 - (void)onLoadPituFinished
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self toastTip:@"资源加载成功"];
+        [self toastTip:@"Resource loaded successfully"];
     });
 }
 - (void)onLoadPituFailed
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self toastTip:@"资源加载失败"];
+        [self toastTip:@"Resource loading failed"];
     });
 }
 

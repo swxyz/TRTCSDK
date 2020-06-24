@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="2304" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -177,10 +177,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cug-Gc-G3I">
-                                <rect key="frame" x="137" y="44" width="101.5" height="50"/>
+                                <rect key="frame" x="125" y="44" width="125" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="语音通话" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4PQ-Pz-3YW">
-                                        <rect key="frame" x="0.0" y="10" width="101.5" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voice calls" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4PQ-Pz-3YW">
+                                        <rect key="frame" x="0.0" y="10" width="125" height="30"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -194,12 +194,12 @@
                                     <constraint firstItem="4PQ-Pz-3YW" firstAttribute="centerY" secondItem="cug-Gc-G3I" secondAttribute="centerY" id="zDm-Wy-Iua"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="房间号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDN-uX-aqd">
-                                <rect key="frame" x="30" y="114" width="52" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDN-uX-aqd">
+                                <rect key="frame" x="30" y="114" width="102" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="IUi-WT-9ko"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -235,12 +235,12 @@
                                     <constraint firstAttribute="bottom" secondItem="cQz-nZ-JJa" secondAttribute="bottom" id="wvX-iC-bEZ"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDV-CD-2gs">
-                                <rect key="frame" x="30" y="189" width="52" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDV-CD-2gs">
+                                <rect key="frame" x="30" y="189" width="74.5" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="ZUR-Lj-Cw4"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -276,22 +276,23 @@
                                     <constraint firstAttribute="height" constant="35" id="ylS-yY-JGg"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="音质选择" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQH-4A-4RL">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound quality" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQH-4A-4RL">
                                 <rect key="frame" x="30" y="264" width="100" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Ka0-gw-24g"/>
                                     <constraint firstAttribute="width" constant="100" id="nwb-ko-IKD"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDZ-hg-Ym7">
-                                <rect key="frame" x="30" y="294" width="113" height="20"/>
+                                <rect key="frame" x="30" y="294" width="91" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="cRM-TK-1Q8"/>
                                 </constraints>
-                                <state key="normal" title="高音质" image="select_off"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="High" image="select_off"/>
                                 <state key="selected" image="select_on">
                                     <color key="titleColor" red="0.019607843140000001" green="0.65490196079999996" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -303,11 +304,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8x-9L-kpG">
-                                <rect key="frame" x="214" y="294" width="131" height="20"/>
+                                <rect key="frame" x="221" y="294" width="124" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="awZ-8q-N6s"/>
                                 </constraints>
-                                <state key="normal" title="标准音质" image="select_off"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Standard" image="select_off"/>
                                 <state key="selected" image="select_on">
                                     <color key="titleColor" red="0.019607843140000001" green="0.65490196079999996" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -319,13 +321,13 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iKm-CQ-hm3">
-                                <rect key="frame" x="40" y="547" width="295" height="50"/>
+                                <rect key="frame" x="40" y="517" width="295" height="50"/>
                                 <color key="backgroundColor" red="0.019607843137254902" green="0.65490196078431373" blue="0.39215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="zEJ-HD-xC4"/>
                                 </constraints>
                                 <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="加入房间">
+                                <state key="normal" title="Join the room">
                                     <color key="titleShadowColor" red="0.30588235289999999" green="0.6588235294" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -338,12 +340,12 @@
                                     <action selector="onJoinBtnClicked:" destination="DjO-yg-BE6" eventType="touchUpInside" id="lrf-EB-d9T"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*若房间号不存在将自动创建并加入该房间" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XHI-mI-Cxc">
-                                <rect key="frame" x="20" y="617" width="335" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*If the room number does not exist, it will be automatically created and added to the room" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XHI-mI-Cxc">
+                                <rect key="frame" x="20" y="587" width="335" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="lnp-r7-yFB"/>
+                                    <constraint firstAttribute="height" constant="60" id="lnp-r7-yFB"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -390,7 +392,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y0g-vt-7GB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1839.1304347826087" y="43.526785714285715"/>
+            <point key="canvasLocation" x="-1839.2" y="42.728635682158924"/>
         </scene>
     </scenes>
     <resources>

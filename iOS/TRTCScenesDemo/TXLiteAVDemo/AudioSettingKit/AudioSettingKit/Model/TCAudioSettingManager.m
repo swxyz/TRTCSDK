@@ -7,8 +7,10 @@
 //
 
 #import "TCAudioSettingManager.h"
-#import "TRTCCloud.h"
-#import "TXAudioEffectManager.h"
+//#import "TRTCCloud.h"
+#import <TXLiteAVSDK_TRTC/TRTCCloud.h>
+//#import "TXAudioEffectManager.h"
+#import <TXLiteAVSDK_TRTC/TXAudioEffectManager.h>
 
 @interface TCAudioSettingManager (){
     uint32_t _bgmID; // 当前播放的bgmID

@@ -47,8 +47,8 @@ class LiveRoomMainViewController: UIViewController {
         collection.delegate = self
         collection.dataSource = self
         let header = MJRefreshStateHeader(refreshingTarget: self, refreshingAction: #selector(loadRoomsInfo))
-        header.setTitle("下拉刷新", for: .pulling)
-        header.setTitle("刷新中", for: .refreshing)
+        header.setTitle("Pull down to refresh", for: .pulling)
+        header.setTitle("Refreshing", for: .refreshing)
         header.setTitle("", for: .idle)
         header.lastUpdatedTimeLabel?.isHidden = true
         collection.mj_header = header
@@ -58,7 +58,7 @@ class LiveRoomMainViewController: UIViewController {
     lazy var createRoomBtn: UIButton = {
         let btn = UIButton()
         btn.backgroundColor = .appTint
-        btn.setTitle("新建直播间", for: .normal)
+        btn.setTitle("New live room", for: .normal)
         btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
         btn.setTitleColor(.white, for: .normal)
         btn.layer.cornerRadius = 6
@@ -99,7 +99,7 @@ class LiveRoomMainViewController: UIViewController {
 
     private func initNavigationItemTitleView() {
         let titleView = UILabel()
-        titleView.text = "视频互动直播"
+        titleView.text = "Video live"
         titleView.textColor = .white
         titleView.textAlignment = .center
         titleView.font = UIFont.boldSystemFont(ofSize: 17)
@@ -112,7 +112,7 @@ class LiveRoomMainViewController: UIViewController {
         titleView.addGestureRecognizer(recognizer)
         let isCdnMode = ((UserDefaults.standard.object(forKey: "liveRoomConfig_useCDNFirst") as? Bool) ?? false)
         if isCdnMode {
-            let rightItem = UIBarButtonItem(title: "CDN模式", style: .done, target: nil, action: nil)
+            let rightItem = UIBarButtonItem(title: "CDN Playback", style: .done, target: nil, action: nil)
             navigationItem.rightBarButtonItem = rightItem
         }
     }
@@ -121,11 +121,11 @@ class LiveRoomMainViewController: UIViewController {
         if longPress.state == .began {
             let isCdnMode = ((UserDefaults.standard.object(forKey: "liveRoomConfig_useCDNFirst") as? Bool) ?? false)
             let newMode = isCdnMode ? "TRTC" : "CDN"
-            let alert = UIAlertController(title: "是否需要切换到\(newMode)模式", message: nil, preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (ok) in
+            let alert = UIAlertController(title: "Do you need to switch to \(newMode)mode", message: nil, preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (ok) in
                 
             }
-            let okAction = UIAlertAction(title: "确定", style: .default) { (ok) in
+            let okAction = UIAlertAction(title: "OK", style: .default) { (ok) in
                 if isCdnMode { //cdn 切 trtc
                     UserDefaults.standard.set(false, forKey: "liveRoomConfig_useCDNFirst")
                     UserDefaults.standard.set(nil, forKey: "liveRoomConfig_cndPlayDomain")
@@ -134,7 +134,7 @@ class LiveRoomMainViewController: UIViewController {
                     //此处设置您的 CDN 推流地址
                     UserDefaults.standard.set("http://3891.liveplay.myqcloud.com/live", forKey: "liveRoomConfig_cndPlayDomain")
                 }
-                self.view.makeToast("重启app后\(newMode)模式生效")
+                self.view.makeToast("After restarting the app \(newMode) Mode takes effect")
             }
             alert.addAction(cancelAction)
             alert.addAction(okAction)

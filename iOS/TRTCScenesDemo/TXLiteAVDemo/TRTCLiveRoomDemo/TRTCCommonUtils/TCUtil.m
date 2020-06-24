@@ -98,9 +98,9 @@
         NSData* data = [TCUtil dictionary2JsonData:params];
         if (data == nil)
         {
-            DebugLog(@"sendHttpRequest failed，参数转成json格式失败");
+            DebugLog(@"sendHttpRequest failed，Parameter conversion to json format failed");
             dispatch_async(dispatch_get_main_queue(), ^{
-                handler(kError_ConvertJsonFailed, @"参数错误", nil);
+                handler(kError_ConvertJsonFailed, @"Parameter error", nil);
             });
             return;
         }
@@ -177,7 +177,7 @@
         NSData* data = [TCUtil dictionary2JsonData:param];
         if (data == nil)
         {
-            DebugLog(@"sendHttpRequest failed，参数转成json格式失败");
+            DebugLog(@"sendHttpRequest failed，Parameter conversion to json format failed");
             dispatch_async(dispatch_get_main_queue(), ^{
                 handler(kError_ConvertJsonFailed, nil);
             });

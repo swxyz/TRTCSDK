@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     
     let showButton: UIButton = {
         let button = UIButton.init(type: .system)
-        button.setTitle("显示", for: .normal)
+        button.setTitle("Display", for: .normal)
         button.addTarget(self, action: #selector(showMenu), for: .touchUpInside)
         button.frame = CGRect.init(origin: .zero, size: .init(width: 60, height: 40))
         return button

@@ -73,7 +73,7 @@ class AudioCallViewController: UIViewController {
         view.addSubview(panel)
         let label = UILabel()
         label.textColor = UIColor(hex: "#a4a4a4")
-        label.text = "他们也在"
+        label.text = "They are also"
         label.textAlignment = .center
         panel.addSubview(label)
         label.snp.makeConstraints { (make) in

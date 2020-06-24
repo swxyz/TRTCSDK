@@ -10,7 +10,6 @@
 		401A9A42247FACAF00C0763B /* TCAudioSettingManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 401A9A40247FACAF00C0763B /* TCAudioSettingManager.h */; };
 		401A9A43247FACAF00C0763B /* TCAudioSettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 401A9A41247FACAF00C0763B /* TCAudioSettingManager.m */; };
 		401A9A48247FB78F00C0763B /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 401A9A47247FB78F00C0763B /* libc++.tbd */; };
-		402ABF98248550FA00C84246 /* TXLiteAVSDK_TRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 402ABF97248550FA00C84246 /* TXLiteAVSDK_TRTC.framework */; };
 		40AF719F247D036200EBB371 /* AudioEffectSettingKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 40AF719D247D036200EBB371 /* AudioEffectSettingKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		40AF71AD247D03E700EBB371 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AF71AC247D03E700EBB371 /* AppDelegate.swift */; };
 		40AF71AF247D03E700EBB371 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AF71AE247D03E700EBB371 /* SceneDelegate.swift */; };
@@ -69,6 +68,7 @@
 		40E25FB5248029F8005EB543 /* ASViewController+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 40E25F9C248029F8005EB543 /* ASViewController+MASAdditions.h */; };
 		40E25FB6248029F8005EB543 /* ASNSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E25F9D248029F8005EB543 /* ASNSLayoutConstraint+MASDebugAdditions.m */; };
 		40E25FB924803F68005EB543 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 401A9A47247FB78F00C0763B /* libc++.tbd */; };
+		FFD3F45F2496D2AB00D7DE0D /* TXLiteAVSDK_TRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 402ABF97248550FA00C84246 /* TXLiteAVSDK_TRTC.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -181,8 +181,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				402ABF98248550FA00C84246 /* TXLiteAVSDK_TRTC.framework in Frameworks */,
 				40E25FB924803F68005EB543 /* libc++.tbd in Frameworks */,
+				FFD3F45F2496D2AB00D7DE0D /* TXLiteAVSDK_TRTC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -806,6 +806,7 @@
 				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "${SRCROOT}/AudioSettingKit/AudioEffectSettingKit.modulemap";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tencent.AudioSettingKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -843,6 +844,7 @@
 				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "${SRCROOT}/AudioSettingKit/AudioEffectSettingKit.modulemap";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tencent.AudioSettingKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -857,7 +859,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = F8A3GH6Q4W;
+				DEVELOPMENT_TEAM = FNAPRWCJSK;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "${SRCROOT}/../../../SDK/";
 				INFOPLIST_FILE = AudioSettingKitExample/Info.plist;
@@ -879,7 +881,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = F8A3GH6Q4W;
+				DEVELOPMENT_TEAM = FNAPRWCJSK;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "${SRCROOT}/../../../SDK/";
 				INFOPLIST_FILE = AudioSettingKitExample/Info.plist;

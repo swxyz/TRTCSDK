@@ -20,7 +20,7 @@
 @implementation TRTCVideoSettingsViewController
 
 - (NSString *)title {
-    return @"视频";
+    return @"Video";
 }
 
 - (void)viewDidLoad {
@@ -30,7 +30,7 @@
     __weak __typeof(self) wSelf = self;
     
     self.bitrateItem = [[TRTCSettingsSliderItem alloc]
-                        initWithTitle:@"码率"
+                        initWithTitle:@"Code rate"
                         value:0 min:0 max:0 step:0
                         continuous:NO
                         action:^(float bitrate) {
@@ -38,67 +38,67 @@
     }];
     
     self.items = @[
-        [[TRTCSettingsSelectorItem alloc] initWithTitle:@"分辨率"
+        [[TRTCSettingsSelectorItem alloc] initWithTitle:@"Resolution"
                                                   items:TRTCVideoConfig.resolutionNames
                                           selectedIndex:config.resolutionIndex
                                                  action:^(NSInteger index) {
             [wSelf onSelectResolutionIndex:index];
         }],
-        [[TRTCSettingsSelectorItem alloc] initWithTitle:@"帧率"
+        [[TRTCSettingsSelectorItem alloc] initWithTitle:@"Frame rate"
                                                   items:TRTCVideoConfig.fpsList
                                           selectedIndex:config.fpsIndex
                                                  action:^(NSInteger index) {
             [wSelf onSelectFpsIndex:index];
         }],
         self.bitrateItem,
-        [[TRTCSettingsSegmentItem alloc] initWithTitle:@"画质偏好"
-                                                 items:@[@"优先流畅", @"优先清晰"]
+        [[TRTCSettingsSegmentItem alloc] initWithTitle:@"Picture quality"
+                                                 items:@[@"Fluency", @"Clarity"]
                                          selectedIndex:config.qosPreferenceIndex
                                                 action:^(NSInteger index) {
             [wSelf onSelectQosPreferenceIndex:index];
         }],
-        [[TRTCSettingsSegmentItem alloc] initWithTitle:@"画面方向"
-                                                 items:@[@"横屏模式", @"竖屏模式"]
+        [[TRTCSettingsSegmentItem alloc] initWithTitle:@"Screen direction"
+                                                 items:@[@"Landscape", @"Portrait"]
                                          selectedIndex:config.videoEncConfig.resMode
                                                 action:^(NSInteger index) {
             [wSelf onSelectResolutionModelIndex:index];
         }],
-        [[TRTCSettingsSegmentItem alloc] initWithTitle:@"填充模式"
-                                                 items:@[@"充满", @"适应"]
+        [[TRTCSettingsSegmentItem alloc] initWithTitle:@"Fill mode"
+                                                 items:@[@"Full", @"Adapt"]
                                          selectedIndex:config.fillMode
                                                 action:^(NSInteger index) {
             [wSelf onSelectFillModeIndex:index];
         }],
-        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"开启视频采集"
+        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"Start video capture"
                                                  isOn:config.isEnabled
                                                action:^(BOOL isOn) {
             [wSelf onEnableVideo:isOn];
         }],
-        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"开启推送视频"
+        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"Open push video"
                                                  isOn:!config.isMuted
                                                action:^(BOOL isOn) {
             [wSelf onMuteVideo:!isOn];
         }],
-        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"暂停屏幕采集"
+        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"Pause screen capture"
                                                  isOn:config.isScreenCapturePaused
                                                action:^(BOOL isOn) {
             [wSelf onPauseScreenCapture:isOn];
         }],
-        [[TRTCSettingsSegmentItem alloc] initWithTitle:@"开启预览镜像"
+        [[TRTCSettingsSegmentItem alloc] initWithTitle:@"Preview image"
                                                  items:TRTCVideoConfig.localMirrorTypeNames
                                          selectedIndex:config.localMirrorType
                                                 action:^(NSInteger index) {
             [wSelf onSelectLocalMirror:index];
         }],
-        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"开启远程镜像"
+        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"Turn on remote mirroring"
                                                  isOn:config.isRemoteMirrorEnabled
                                                action:^(BOOL isOn) {
             [wSelf onEnableRemoteMirror:isOn];
         }],
-        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"开启视频水印" isOn:NO action:^(BOOL isOn) {
+        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"Turn on video watermark" isOn:NO action:^(BOOL isOn) {
             [wSelf onEnableWatermark:isOn];
         }],
-        [[TRTCSettingsButtonItem alloc] initWithTitle:@"截图分享" buttonTitle:@"分享" action:^{
+        [[TRTCSettingsButtonItem alloc] initWithTitle:@"Screenshot sharing" buttonTitle:@"Share it" action:^{
             [wSelf snapshotLocalVideo];
         }],
     ];

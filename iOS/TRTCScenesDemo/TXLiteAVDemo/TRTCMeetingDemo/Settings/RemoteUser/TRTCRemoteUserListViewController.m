@@ -29,7 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"用户列表";
+    self.title = @"User list";
     self.view.backgroundColor = UIColor.clearColor;
     self.tableView.allowsSelection = YES;
 }

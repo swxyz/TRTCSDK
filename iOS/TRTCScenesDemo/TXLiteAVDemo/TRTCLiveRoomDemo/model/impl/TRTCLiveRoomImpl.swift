@@ -237,7 +237,7 @@ public class TRTCLiveRoomImpl: NSObject, TRTCLiveRoom {
             trtcAction.enterRoom(roomID: String(roomID), userId: me.userId, role: .audience)
             DispatchQueue.main.asyncAfter(deadline: .now() + 10) { [id = trtcAction.curRoomUUID] in //enter room 10s 超时
                 if id == self.trtcAction.curRoomUUID, let enterRoomCallback = self.enterRoomCallback {
-                    enterRoomCallback(-1, "enterRoom请求超时")
+                    enterRoomCallback(-1, "enterRoom request timeout")
                     self.enterRoomCallback = nil
                 }
             }
@@ -264,7 +264,7 @@ public class TRTCLiveRoomImpl: NSObject, TRTCLiveRoom {
         guard let _ = checkUserLogined(callback) else { return }
         guard let roomID = checkRoomJoined(callback) else { return }
         guard !isOwner else {
-            callback?(-1, "只有普通成员才能退出房间")
+            callback?(-1, "Only ordinary members can exit the meeting room")
             return
         }
         
@@ -304,7 +304,7 @@ public class TRTCLiveRoomImpl: NSObject, TRTCLiveRoom {
     public func getAudienceList(callback: UserListCallback?) {
         logApi("getAudienceList")
         guard let roomID = checkRoomJoined(nil) else {
-            callback?(-1, "没有进入房间", self.memberManager.audience)
+            callback?(-1, "Did not enter the room", self.memberManager.audience)
             return
         }
         TRTCLiveRoomIMAction.getAllMembers(roomID: roomID, success: { [weak self] (users) in
@@ -384,7 +384,7 @@ public class TRTCLiveRoomImpl: NSObject, TRTCLiveRoom {
         } else if let user = memberManager.anchors[userID] {
             trtcAction.startPlay(userID: user.userId, streamID: user.streamId, view: view, usesCDN: shouldPlayCdn, callback: callback)
         } else {
-            callback?(-1, "未找到该主播")
+            callback?(-1, "The host was not found")
         }
     }
     
@@ -401,27 +401,27 @@ public class TRTCLiveRoomImpl: NSObject, TRTCLiveRoom {
                                   responseCallback: TRTCLiveRoomImpl.ResponseCallback?) {
         logApi("requestJoinAnchor", data: reason)
         guard let _ = checkUserLogined(nil) else {
-            responseCallback?(false, "还未登录")
+            responseCallback?(false, "Not yet logged in")
             return
         }
         guard let _ = checkRoomJoined(nil) else {
-            responseCallback?(false, "没有进入房间")
+            responseCallback?(false, "Did not enter the room")
             return
         }
         guard !isAnchor else {
-            responseCallback?(false, "当前已经是连麦状态")
+            responseCallback?(false, "It is already in Lianmai state")
             return
         }
         if status == .roomPK || pkAnchorInfo.userId != nil {
-            responseCallback?(false, "当前主播正在PK")
+            responseCallback?(false, "The current anchor is PK")
             return
         }
         if joinAnchorInfo.userId != nil {
-            responseCallback?(false, "当前用户正在等待连麦回复")
+            responseCallback?(false, "The current user is waiting for Lianmai to reply")
             return
         }
         if status == .none {
-            responseCallback?(false, "出错请稍候尝试")
+            responseCallback?(false, "Please try again later")
             return
         }
         guard let ownerId = ownerId else { fatalError() }
@@ -439,7 +439,7 @@ public class TRTCLiveRoomImpl: NSObject, TRTCLiveRoom {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + trtcLiveSendMsgTimeOut) { [id = joinAnchorInfo.uuid] in //连麦发起方检查 15s 内超时回应
             if let callback = self.requestJoinAnchorCallback, id == self.joinAnchorInfo.uuid {
-                callback(false, "主播未回应连麦请求")
+                callback(false, "The host did not respond to host's request")
                 self.requestJoinAnchorCallback = nil
                 self.clearJoinState()
             }
@@ -473,7 +473,7 @@ public class TRTCLiveRoomImpl: NSObject, TRTCLiveRoom {
         guard let _ = checkUserLogined(callback) else { return }
         guard let _ = checkRoomJoined(callback) else { return }
         guard memberManager.anchors[userID] != nil else {
-            callback?(-1, "该用户尚未连麦")
+            callback?(-1, "This user has not connected")
             return
         }
         
@@ -488,35 +488,35 @@ public class TRTCLiveRoomImpl: NSObject, TRTCLiveRoom {
                               responseCallback: TRTCLiveRoomImpl.ResponseCallback?) {
         logApi("requestRoomPK", data: roomID, userID)
         guard let _ = checkUserLogined(nil) else {
-            responseCallback?(false, "还未登录")
+            responseCallback?(false, "Not yet logged in")
             return
         }
         guard let myRoomId = checkRoomJoined(nil) else {
-            responseCallback?(false, "没有进入房间")
+            responseCallback?(false, "Did not enter the room")
             return
         }
         guard checkIsOwner(nil) else {
-            responseCallback?(false, "只有主播才能操作")
+            responseCallback?(false, "Only the host can operate")
             return
         }
         guard let streamId = checkIsPublishing(nil) else {
-            responseCallback?(false, "只有推流后才能操作")
+            responseCallback?(false, "Can only operate after pushing the stream")
             return
         }
         if status == .linkMic || joinAnchorInfo.userId != nil {
-            responseCallback?(false, "当前正在连麦中，无法开启PK")
+            responseCallback?(false, "Currently in mic, unable to open PK")
             return
         }
         if status == .roomPK {
-            responseCallback?(false, "当前主播正在PK")
+            responseCallback?(false, "The current host is PK")
             return
         }
         if pkAnchorInfo.userId != nil {
-            responseCallback?(false, "当前主播正在等待PK回复")
+            responseCallback?(false, "The current host is waiting for PK reply")
             return
         }
         if status == .none {
-            responseCallback?(false, "出错请稍候尝试")
+            responseCallback?(false, "Please try again later")
             return
         }
         requestRoomPKCallback = responseCallback
@@ -533,7 +533,7 @@ public class TRTCLiveRoomImpl: NSObject, TRTCLiveRoom {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + trtcLiveSendMsgTimeOut) { [id = pkAnchorInfo.uuid] in //PK发起方 15s 内超时回应
             if let callback = self.requestRoomPKCallback, id == self.pkAnchorInfo.uuid {
-                callback(false, "对方主播未回应跨房PK请求")
+                callback(false, "The other host did not respond to the cross-room PK request")
                 self.requestRoomPKCallback = nil
                 self.clearPKState()
             }
@@ -569,7 +569,7 @@ public class TRTCLiveRoomImpl: NSObject, TRTCLiveRoom {
         guard let _ = checkUserLogined(callback), isOwner else { return }
         guard let _ = checkRoomJoined(callback) else { return }
         guard status == .roomPK, let pkAnchor = memberManager.pkAnchor else {
-            callback?(-1, "当前不是PK状态")
+            callback?(-1, "Not currently in PK state")
             return
         }
         pkAnchorInfo.reset()
@@ -787,13 +787,13 @@ extension TRTCLiveRoomImpl {
     // 主播收到观众的连麦请求
     func handleJoinAnchorRequest(from user: TRTCLiveUserInfo, reason: String?) {
         if status == .roomPK || pkAnchorInfo.userId != nil {
-            responseJoinAnchor(userID: user.userId, agree: false, reason: "主播正在跨房PK中")
+            responseJoinAnchor(userID: user.userId, agree: false, reason: "The host is in the cross-room PK")
             return
         }
         
         if joinAnchorInfo.userId != nil {
             if joinAnchorInfo.userId != user.userId {
-                responseJoinAnchor(userID: user.userId, agree: false, reason: "主播正在处理他人连麦中")
+                responseJoinAnchor(userID: user.userId, agree: false, reason: "The host is dealing with others")
             }
             return
         }
@@ -803,7 +803,7 @@ extension TRTCLiveRoomImpl {
         joinAnchorInfo.uuid = UUID().uuidString
         DispatchQueue.main.asyncAfter(deadline: .now() + trtcLiveHandleMsgTimeOut) { [id = joinAnchorInfo.uuid] in //连麦接收方 10s 内回复否则超时
             if !self.joinAnchorInfo.isResponsed && self.joinAnchorInfo.uuid == id {
-                self.responseJoinAnchor(userID: user.userId, agree: false, reason: "超时未回应")
+                self.responseJoinAnchor(userID: user.userId, agree: false, reason: "Timeout not responding")
                 self.clearJoinState()
             }
         }
@@ -843,11 +843,11 @@ extension TRTCLiveRoomImpl {
     // 主播收到其它主播的跨房PK请求
     func handleRoomPKRequest(from user: TRTCLiveUserInfo, roomId: String, streamId: String) {
         if status == .linkMic || joinAnchorInfo.userId != nil {
-            responseRoomPK(userID: user.userId, agree: false, reason: "主播正在连麦中")
+            responseRoomPK(userID: user.userId, agree: false, reason: "The host is in the middle")
             return
         }
         if (pkAnchorInfo.userId != nil && pkAnchorInfo.roomId != roomId) || status == .roomPK {
-            responseRoomPK(userID: user.userId, agree: false, reason: "主播正在PK中")
+            responseRoomPK(userID: user.userId, agree: false, reason: "The host is in PK")
             return
         }
         if pkAnchorInfo.userId == user.userId {
@@ -861,7 +861,7 @@ extension TRTCLiveRoomImpl {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + trtcLiveHandleMsgTimeOut) {[id = pkAnchorInfo.uuid] in //PK接收方 10s 内回复否则超时
             if !self.pkAnchorInfo.isResponsed && self.pkAnchorInfo.uuid == id {
-                self.responseRoomPK(userID: user.userId, agree: false, reason: "超时未响应")
+                self.responseRoomPK(userID: user.userId, agree: false, reason: "Timeout not responding")
                 self.clearPKState()
             }
         }
@@ -967,7 +967,7 @@ extension TRTCLiveRoomImpl {
     
     func checkUserLogined(_ callback: TRTCLiveRoomImpl.Callback?) -> TRTCLiveUserInfo? {
         guard let me = me else {
-            callback?(-1, "还未登录")
+            callback?(-1, "Not yet logged in")
             return nil
         }
         return me
@@ -975,7 +975,7 @@ extension TRTCLiveRoomImpl {
     
     func checkRoomJoined(_ callback: TRTCLiveRoomImpl.Callback?) -> String? {
         guard let roomID = roomID else {
-            callback?(-1, "没有进入房间")
+            callback?(-1, "Did not enter the room")
             return nil
         }
         return roomID
@@ -983,7 +983,7 @@ extension TRTCLiveRoomImpl {
     
     func checkRoomUnjoined(_ callback: TRTCLiveRoomImpl.Callback?) -> Bool {
         guard roomID == nil else {
-            callback?(-1, "当前在房间中")
+            callback?(-1, "Currently in the room")
             return false
         }
         return true
@@ -991,7 +991,7 @@ extension TRTCLiveRoomImpl {
     
     func checkIsOwner(_ callback: TRTCLiveRoomImpl.Callback?) -> Bool {
         guard isOwner else {
-            callback?(-1, "只有主播才能操作")
+            callback?(-1, "Only the host can operate")
             return false
         }
         return true
@@ -999,7 +999,7 @@ extension TRTCLiveRoomImpl {
     
     func checkIsPublishing(_ callback: TRTCLiveRoomImpl.Callback?) -> String? {
         guard let streamId = me?.streamId else {
-            callback?(-1, "只有推流后才能操作")
+            callback?(-1, "Can only operate after pushing the stream")
             return nil
         }
         return streamId

@@ -15,7 +15,7 @@
                   <BuildableReference
                      BuildableIdentifier = "primary"
                      BlueprintIdentifier = "40B3F65B2446E518000C37A3"
-                     BuildableName = "TXLiteAVDemo_TRTC.app"
+                     BuildableName = "TRTC.app"
                      BlueprintName = "TXLiteAVDemo_TRTC"
                      ReferencedContainer = "container:TXLiteAVDemo.xcodeproj">
                   </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "40B3F65B2446E518000C37A3"
-               BuildableName = "TXLiteAVDemo_TRTC.app"
+               BuildableName = "TRTC.app"
                BlueprintName = "TXLiteAVDemo_TRTC"
                ReferencedContainer = "container:TXLiteAVDemo.xcodeproj">
             </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "40B3F65B2446E518000C37A3"
-            BuildableName = "TXLiteAVDemo_TRTC.app"
+            BuildableName = "TRTC.app"
             BlueprintName = "TXLiteAVDemo_TRTC"
             ReferencedContainer = "container:TXLiteAVDemo.xcodeproj">
          </BuildableReference>
@@ -81,7 +81,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "40B3F65B2446E518000C37A3"
-            BuildableName = "TXLiteAVDemo_TRTC.app"
+            BuildableName = "TRTC.app"
             BlueprintName = "TXLiteAVDemo_TRTC"
             ReferencedContainer = "container:TXLiteAVDemo.xcodeproj">
          </BuildableReference>

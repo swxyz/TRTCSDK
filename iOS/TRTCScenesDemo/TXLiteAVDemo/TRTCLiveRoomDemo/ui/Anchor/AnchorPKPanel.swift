@@ -131,7 +131,7 @@ import Foundation
         if roomInfos.count > 0 {
             return " "
         }
-        return isLoading ? "正在加载..." : "暂无主播"
+        return isLoading ? "Loading..." : "No host"
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

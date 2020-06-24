@@ -82,7 +82,7 @@
             UILabel* uidLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, imageView.bottom + 10, _tipBgView.width, 30)];
             NSString* uidText = _userId;
             if (_type == VideoViewType_Local) {
-                uidText = [uidText stringByAppendingString:@"(您自己)"];
+                uidText = [uidText stringByAppendingString:@"(Yourself)"];
             }
             uidLabel.numberOfLines = 0;
             [uidLabel sizeToFit];
@@ -90,7 +90,7 @@
             uidLabel.text = uidText;
             uidLabel.textColor = UIColor.whiteColor;
             UILabel* closeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, uidLabel.bottom, uidLabel.width, uidLabel.height)];
-            closeLabel.text = @"视频已关闭";
+            closeLabel.text = @"Video is closed";
             closeLabel.textAlignment = NSTextAlignmentCenter;
             closeLabel.textColor = UIColor.lightTextColor;
             [_tipBgView addSubview:imageView];

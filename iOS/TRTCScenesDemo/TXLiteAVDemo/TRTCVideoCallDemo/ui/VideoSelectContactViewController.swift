@@ -51,7 +51,7 @@ class VideoSelectContactViewController: UIViewController {
     lazy var doneBtn: UIButton = {
        let done = UIButton()
         done.backgroundColor = .appTint
-        done.setTitle("完成", for: .normal)
+        done.setTitle("Call", for: .normal)
         done.setTitleColor(.white, for: .normal)
         done.alpha = 0.5
         done.titleLabel?.font = UIFont.systemFont(ofSize: 13)

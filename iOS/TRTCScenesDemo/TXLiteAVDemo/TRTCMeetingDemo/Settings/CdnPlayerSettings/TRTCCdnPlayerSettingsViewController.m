@@ -11,26 +11,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"CDN设置";
+    self.title = @"CDN settings";
     
     TRTCCdnPlayerConfig *config = self.manager.config;
     __weak __typeof(self) wSelf = self;
 
     self.items = @[
-        [[TRTCSettingsSegmentItem alloc] initWithTitle:@"画面旋转（顺时针)"
+        [[TRTCSettingsSegmentItem alloc] initWithTitle:@"Picture rotation (clockwise)"
                                                  items:@[@"0", @"90", @"180", @"270"]
                                          selectedIndex:[self indexOfOrientation:config.orientation]
                                                 action:^(NSInteger index) {
             [wSelf onSelectRotationIndex:index];
         }],
-        [[TRTCSettingsSegmentItem alloc] initWithTitle:@"填充模式"
-                                                 items:@[@"填充", @"自适应"]
+        [[TRTCSettingsSegmentItem alloc] initWithTitle:@"Fill mode"
+                                                 items:@[@"Filling", @"Adaptive"]
                                          selectedIndex:config.renderMode
                                                 action:^(NSInteger index) {
             [wSelf onSelectRenderModeIndex:index];
         }],
-        [[TRTCSettingsSegmentItem alloc] initWithTitle:@"缓冲方式"
-                                                 items:@[@"快速", @"平滑", @"自动"]
+        [[TRTCSettingsSegmentItem alloc] initWithTitle:@"Buffering method"
+                                                 items:@[@"Fast", @"Smooth", @"Auto"]
                                          selectedIndex:config.cacheType
                                                 action:^(NSInteger index) {
             [wSelf onSelectCacheTypeIndex:index];

@@ -495,7 +495,7 @@
 		40AA533524458EC800303EF7 /* TCBeautyPanel.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = TCBeautyPanel.xcodeproj; sourceTree = "<group>"; };
 		40AA539724459DF900303EF7 /* UGCKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UGCKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40AC7322246D35A300FAF33D /* TXLiteAVDemo_TRTC_AppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TXLiteAVDemo_TRTC_AppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		40B3F6D22446E518000C37A3 /* TXLiteAVDemo_TRTC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TXLiteAVDemo_TRTC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		40B3F6D22446E518000C37A3 /* TRTC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TRTC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40B3F8C62446E6C5000C37A3 /* VideoCallUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCallUserCell.swift; sourceTree = "<group>"; };
 		40B3F8C72446E6C5000C37A3 /* VideoCallMainViewController+UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VideoCallMainViewController+UI.swift"; sourceTree = "<group>"; };
 		40B3F8C82446E6C5000C37A3 /* VideoCallMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCallMainViewController.swift; sourceTree = "<group>"; };
@@ -1565,7 +1565,7 @@
 		40F853041EE8FB3800EE47D7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				40B3F6D22446E518000C37A3 /* TXLiteAVDemo_TRTC.app */,
+				40B3F6D22446E518000C37A3 /* TRTC.app */,
 				40AC7322246D35A300FAF33D /* TXLiteAVDemo_TRTC_AppStore.app */,
 			);
 			name = Products;
@@ -1753,7 +1753,7 @@
 			);
 			name = TXLiteAVDemo_TRTC;
 			productName = TXLiteAVDemo;
-			productReference = 40B3F6D22446E518000C37A3 /* TXLiteAVDemo_TRTC.app */;
+			productReference = 40B3F6D22446E518000C37A3 /* TRTC.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1766,8 +1766,8 @@
 				ORGANIZATIONNAME = Tencent;
 				TargetAttributes = {
 					40B3F65B2446E518000C37A3 = {
-						DevelopmentTeam = 5GHU44CJHG;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = FNAPRWCJSK;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -2242,10 +2242,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_TRTC;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 5GHU44CJHG;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FNAPRWCJSK;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2277,9 +2277,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 7.3;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tencent.trtcScenesDemo1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = trtcscenesdemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tencent.th.trtc;
+				PRODUCT_NAME = TRTC;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/TXLiteAVDemo/App/TXLiteAVDemo-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "TXLiteAVDemo-Swift.h";
@@ -2295,11 +2295,11 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_DEBUG_INFORMATION_LEVEL = "line-tables-only";
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = FN2V63AD2J;
+				DEVELOPMENT_TEAM = FNAPRWCJSK;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2332,9 +2332,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 7.3;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tencent.mrtc;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = com.tencent.mrtc_Production_SignProvision;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tencent.th.trtc;
+				PRODUCT_NAME = TRTC;
+				PROVISIONING_PROFILE_SPECIFIER = TC_TRTC_appstore;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/TXLiteAVDemo/App/TXLiteAVDemo-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "TXLiteAVDemo-Swift.h";
 				SWIFT_VERSION = 5.0;

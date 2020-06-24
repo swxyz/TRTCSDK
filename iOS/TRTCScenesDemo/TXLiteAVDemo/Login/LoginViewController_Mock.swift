@@ -26,7 +26,7 @@ class LoginViewController: UIViewController {
         let title = UILabel()
         title.textColor = .appTint
         title.font = UIFont.boldSystemFont(ofSize: 30)
-        title.text = "腾讯云 TRTC"
+        title.text = "Tencent Cloud TRTC"
         title.textAlignment = .center
         return title
     }()
@@ -44,7 +44,7 @@ class LoginViewController: UIViewController {
     lazy var loginButton: UIButton = {
         let sign = UIButton()
         sign.backgroundColor = .appTint
-        sign.setTitle("登录", for: .normal)
+        sign.setTitle("Login", for: .normal)
         sign.setTitleColor(.white, for: .normal)
         sign.layer.cornerRadius = 4
         return sign
@@ -56,7 +56,7 @@ class LoginViewController: UIViewController {
         tip.font = UIFont.systemFont(ofSize: 14)
         tip.textColor = UIColor(hex: "525252")
         let sdkVersion = TRTCCloud.getSDKVersion()
-        tip.text = "腾讯云 TRTC v\(sdkVersion ?? "0.0.1")"
+        tip.text = "Tencent Cloud TRTC v\(sdkVersion ?? "0.0.1")"
         tip.adjustsFontSizeToFitWidth = true
         return tip
     }()
@@ -66,7 +66,7 @@ class LoginViewController: UIViewController {
         tip.textAlignment = .center
         tip.font = UIFont.systemFont(ofSize: 14)
         tip.textColor = UIColor(hex: "525252")
-        tip.text = "本APP用于展示腾讯云实时音视频的各类功能"
+        tip.text = "This APP is used to display various functions of Tencent Cloud real-time audio and video"
         tip.adjustsFontSizeToFitWidth = true
         return tip
     }()

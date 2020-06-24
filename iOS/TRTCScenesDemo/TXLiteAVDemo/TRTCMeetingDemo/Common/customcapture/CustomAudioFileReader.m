@@ -64,7 +64,7 @@ static CustomAudioFileReader *_instance;
     NSString *strFileName = [NSString stringWithFormat:@"CustomAudio%d_%d",_sampleRate,_channels];
     NSString *resourcePath = [[NSBundle mainBundle] pathForResource:strFileName ofType:@"pcm"];
     if (!resourcePath) {
-        NSLog(@"文件打开失败，可能是没有对应格式的pcm文件，文件名[%@]！！",strFileName);
+        NSLog(@"The file fails to open, it may be that there is no corresponding format of the pcm file, the file name[%@]！！",strFileName);
         return;
     }
     _fileData = [NSData dataWithContentsOfFile:resourcePath];

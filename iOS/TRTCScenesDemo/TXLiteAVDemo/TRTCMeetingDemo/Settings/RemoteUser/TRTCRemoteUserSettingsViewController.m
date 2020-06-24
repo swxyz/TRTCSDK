@@ -20,29 +20,29 @@
     TRTCRemoteUserConfig *userSettings = self.userManager.remoteUsers[self.userId];
     __weak __typeof(self) wSelf = self;
     self.items = @[
-        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"开启视频"
+        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"Open video"
                                                  isOn:!userSettings.isVideoMuted
                                                action:^(BOOL isOn) {
             [wSelf onMuteVideo:!isOn];
         }],
-        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"开启音频"
+        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"Turn on audio"
                                                  isOn:!userSettings.isAudioMuted
                                                action:^(BOOL isOn) {
             [wSelf onMuteAudio:!isOn];
         }],
-        [[TRTCSettingsSegmentItem alloc] initWithTitle:@"填充模式"
-                                                 items:@[@"填充", @"自适应"]
+        [[TRTCSettingsSegmentItem alloc] initWithTitle:@"Fill mode"
+                                                 items:@[@"Filling", @"Adaptive"]
                                          selectedIndex:userSettings.fillMode == TRTCVideoFillMode_Fill ? 0 : 1
                                                 action:^(NSInteger index) {
             [wSelf onSelectFillModeIndex:index];
         }],
-        [[TRTCSettingsSegmentItem alloc] initWithTitle:@"画面旋转"
+        [[TRTCSettingsSegmentItem alloc] initWithTitle:@"Picture rotation"
                                                  items:@[@"0", @"90", @"180", @"270"]
                                          selectedIndex:userSettings.rotation
                                                 action:^(NSInteger index) {
             [wSelf onSelectRotationIndex:index];
         }],
-        [[TRTCSettingsSliderItem alloc] initWithTitle:@"音量大小"
+        [[TRTCSettingsSliderItem alloc] initWithTitle:@"Volume"
                                                 value:userSettings.volume
                                                   min:0
                                                   max:100
@@ -51,10 +51,10 @@
                                                action:^(float volume) {
             [wSelf onChangeVolume:volume];
         }],
-        [[TRTCSettingsButtonItem alloc] initWithTitle:@"截图分享" buttonTitle:@"分享" action:^{
+        [[TRTCSettingsButtonItem alloc] initWithTitle:@"Screenshot sharing" buttonTitle:@"Share it" action:^{
             [wSelf snapshotMainVideo];
         }],
-        [[TRTCSettingsButtonItem alloc] initWithTitle:@"辅流截图分享" buttonTitle:@"分享" action:^{
+        [[TRTCSettingsButtonItem alloc] initWithTitle:@"Auxiliary screenshot sharing" buttonTitle:@"Share it" action:^{
             [wSelf snapshotSubVideo];
         }]
     ];

@@ -72,7 +72,7 @@ extension AudioCallViewController {
                 guard let self = self else {return}
                 TRTCAudioCall.shared.isMicMute = !TRTCAudioCall.shared.isMicMute
                 self.mute.setImage(UIImage(named: TRTCAudioCall.shared.isMicMute ? "ic_mute_on" : "ic_mute"), for: .normal)
-                self.view.makeToast(TRTCAudioCall.shared.isMicMute ? "开启静音" : "关闭静音")
+                self.view.makeToast(TRTCAudioCall.shared.isMicMute ? "Turn on mute" : "Mute off")
                 }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: disposebag)
             mute.isHidden = true
             mute.snp.remakeConstraints { (make) in
@@ -90,7 +90,7 @@ extension AudioCallViewController {
                 guard let self = self else {return}
                 TRTCAudioCall.shared.isHandsFreeOn = !TRTCAudioCall.shared.isHandsFreeOn
                 self.handsfree.setImage(UIImage(named: TRTCAudioCall.shared.isHandsFreeOn ? "ic_handsfree_on" : "ic_handsfree"), for: .normal)
-                self.view.makeToast(TRTCAudioCall.shared.isHandsFreeOn ? "开启免提" : "关闭免提")
+                self.view.makeToast(TRTCAudioCall.shared.isHandsFreeOn ? "Turn on handsfree" : "Turn off hands-free")
                 }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: disposebag)
             handsfree.isHidden = true
             handsfree.snp.remakeConstraints { (make) in

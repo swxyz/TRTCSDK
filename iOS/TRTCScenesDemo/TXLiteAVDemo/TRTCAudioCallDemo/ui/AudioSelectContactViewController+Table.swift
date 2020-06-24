@@ -94,9 +94,9 @@ extension AudioSelectContactViewController: UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if shouldShowSearchResult {
-            return "搜索结果"
+            return "Search results"
         }
-        return "最近搜索"
+        return "Recently searched"
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -135,7 +135,7 @@ extension AudioSelectContactViewController: UITableViewDelegate, UITableViewData
             }
         } else {
             if userSelected.userId == AppUtils.shared.curUserId {
-                view.makeToast("不能邀请自己")
+                view.makeToast("Can't invite yourself")
                 return
             }
             selectedUsers.append(userSelected)

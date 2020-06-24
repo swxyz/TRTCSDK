@@ -174,7 +174,7 @@ class TRTCLiveRoomIMAction: NSObject {
                             error: Callback?) {
         manager.getGroupInfo(roomIds, succ: { infos in
             guard let infos = infos as? [TIMGroupInfoResult] else {
-                error?(-1, "无法获取房间信息")
+                error?(-1, "Unable to get room information")
                 return
             }
             let roomInfos = infos.compactMap({ info -> TRTCLiveRoomInfo? in

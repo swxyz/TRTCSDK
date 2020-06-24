@@ -82,28 +82,28 @@
     self.title = self.menuTitle;
     [self observeKeyboard];
     
-    self.roomItem = [[TRTCSettingsLargeInputItem alloc] initWithTitle:@"请输入房间号："
+    self.roomItem = [[TRTCSettingsLargeInputItem alloc] initWithTitle:@"Meeting number："
                                                           placeHolder:[self defaultRoomId]];
-    self.nameItem = [[TRTCSettingsLargeInputItem alloc] initWithTitle:@"请输入用户名："
+    self.nameItem = [[TRTCSettingsLargeInputItem alloc] initWithTitle:@"Username："
                                                           placeHolder:[self randomId]];
-    self.videoInputItem = [[TRTCSettingsSegmentItem alloc] initWithTitle:@"视频输入"
-                                                                   items:@[@"摄像头", @"视频文件", @"录屏"]
+    self.videoInputItem = [[TRTCSettingsSegmentItem alloc] initWithTitle:@"Video input"
+                                                                   items:@[@"Camera", @"Video", @"Screen"]
                                                            selectedIndex:0
                                                                   action:nil];
-    self.audioRecvModeItem = [[TRTCSettingsSegmentItem alloc] initWithTitle:@"音频接收"
-                                             items:@[@"自动", @"手动"]
+    self.audioRecvModeItem = [[TRTCSettingsSegmentItem alloc] initWithTitle:@"Audio reception"
+                                             items:@[@"Automatic", @"Manual"]
                                      selectedIndex:0
                                             action:nil];
-    self.videoRecvModeItem = [[TRTCSettingsSegmentItem alloc] initWithTitle:@"视频接收"
-                                             items:@[@"自动", @"手动"]
+    self.videoRecvModeItem = [[TRTCSettingsSegmentItem alloc] initWithTitle:@"Video reception"
+                                             items:@[@"Automatic", @"Manual"]
                                      selectedIndex:0
                                             action:nil];
-    self.audioQualityItem = [[TRTCSettingsSegmentItem alloc] initWithTitle:@"音质选择"
-                                                                     items:@[@"语音", @"标准", @"音乐"]
+    self.audioQualityItem = [[TRTCSettingsSegmentItem alloc] initWithTitle:@"Sound quality"
+                                                                     items:@[@"Voice", @"Standard", @"Music"]
                                                              selectedIndex:0
                                                                     action:nil];
-    self.roleItem = [[TRTCSettingsSegmentItem alloc] initWithTitle:@"角色选择"
-                                                             items:@[@"上麦主播", @"普通观众"]
+    self.roleItem = [[TRTCSettingsSegmentItem alloc] initWithTitle:@"Role"
+                                                             items:@[@"Host", @"Audience"]
                                                      selectedIndex:0
                                                             action:nil];
     
@@ -128,7 +128,7 @@
     self.joinButton.layer.shadowColor = UIColorFromRGB(0x019b5c).CGColor;
     self.joinButton.layer.shadowOpacity = 0.8;
     self.joinButton.backgroundColor = UIColorFromRGB(0x05a764);
-    [self.joinButton setTitle:@"创建并自动加入该房间" forState:UIControlStateNormal];
+    [self.joinButton setTitle:@"Create and automatically join the room" forState:UIControlStateNormal];
     [self.joinButton addTarget:self action:@selector(onJoinBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:self.joinButton];
@@ -151,16 +151,16 @@
         
         NSString *msg = @"";
         if (SDKAPPID == 0) {
-            msg = @"没有填写SDKAPPID";
+            msg = @"SDKAPPID is not filled";
         }
         if ([SECRETKEY isEqualToString:@""]) {
-            msg = [NSString stringWithFormat:@"%@ 没有填写SECRETKEY", msg];
+            msg = [NSString stringWithFormat:@"%@ SECRETKEY is not filled", msg];
         }
         
-        UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"提示"
+        UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Prompt"
                                                                     message:msg
                                                              preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"好" style:UIAlertActionStyleDefault handler:nil];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
         [ac addAction:ok];
         [self.navigationController presentViewController:ac animated:YES completion:nil];
     }
@@ -196,7 +196,7 @@
     imagePicker.minimumNumberOfSelection = 1;
     imagePicker.maximumNumberOfSelection = 1;
     imagePicker.mediaType = QBImagePickerMediaTypeVideo;
-    imagePicker.title = @"选择视频源";
+    imagePicker.title = @"Select video";
 
     [self.navigationController pushViewController:imagePicker animated:YES];
 }

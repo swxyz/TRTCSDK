@@ -12,9 +12,9 @@ import Toast_Swift
 extension VideoSelectContactViewController {
     func setupUI() {
         ToastManager.shared.position = .center
-        title = "发起呼叫"
+        title = "Make a call"
         view.backgroundColor = .appBackGround
-        let back = UIBarButtonItem.init(title: "取消", style: .plain, target: self, action: #selector(cancel))
+        let back = UIBarButtonItem.init(title: "Cancel", style: .plain, target: self, action: #selector(cancel))
         back.tintColor = .white
         navigationItem.leftBarButtonItem = back
         
@@ -22,7 +22,7 @@ extension VideoSelectContactViewController {
         let right = UIBarButtonItem(customView: doneBtn)
         
         navigationItem.rightBarButtonItem = right
-        searchBar.placeholder = "输入手机号搜索已注册用户"
+        searchBar.placeholder = "Enter the mobile phone number to search for registered users"
         view.addSubview(searchBar)
         
         var topPadding: CGFloat = 44

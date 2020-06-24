@@ -22,7 +22,7 @@
 - (void)setupUI {
     [super setupUI];
     
-    self.sendButton = [UIButton trtc_cellButtonWithTitle:@"发送"];
+    self.sendButton = [UIButton trtc_cellButtonWithTitle:@"Send"];
     [self.sendButton addTarget:self action:@selector(onClickSendButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:self.sendButton];
     [self.sendButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -79,7 +79,7 @@
 - (instancetype)initWithTitle:(NSString *)title
                   placeHolder:(NSString *)placeHolder
                        action:(void (^)(NSString * _Nullable content))action {
-    return [self initWithTitle:title placeHolder:placeHolder content:nil actionTitle:@"发送" action:action];
+    return [self initWithTitle:title placeHolder:placeHolder content:nil actionTitle:@"Send" action:action];
 }
 
 - (instancetype)initWithTitle:(NSString *)title

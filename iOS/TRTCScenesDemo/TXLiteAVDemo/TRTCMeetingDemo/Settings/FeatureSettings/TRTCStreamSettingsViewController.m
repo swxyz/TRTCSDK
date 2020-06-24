@@ -30,8 +30,8 @@
     
     __weak __typeof(self) wSelf = self;
     self.items = @[
-        [[TRTCSettingsSegmentItem alloc] initWithTitle:@"云端混流"
-                                                 items:@[@"关闭", @"手动", @"纯音频", @"预设"]
+        [[TRTCSettingsSegmentItem alloc] initWithTitle:@"Flow"
+                                                 items:@[@"Off", @"Manual", @"AudioOnly", @"Default"]
                                          selectedIndex:config.mixMode
                                                 action:^(NSInteger index) {
             [wSelf onSelectMixModeIndex:index];

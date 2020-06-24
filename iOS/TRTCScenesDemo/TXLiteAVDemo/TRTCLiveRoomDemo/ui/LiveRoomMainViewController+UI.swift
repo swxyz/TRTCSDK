@@ -44,7 +44,7 @@ extension LiveRoomMainViewController {
             }
             if uintIDs.count == 0 {
                 self?.roomsCollection.mj_header?.endRefreshing()
-                self?.view.makeToast("当前暂无内容哦~")
+                self?.view.makeToast("No content currently~")
                 return
             }
             self?.liveRoom?.getRoomInfos(roomIDs: uintIDs, callback: { (code, error, infos) in
@@ -53,16 +53,16 @@ extension LiveRoomMainViewController {
                     self?.roomInfos = infos
                     self?.roomsCollection.reloadData()
                     if infos.count == 0 {
-                        self?.view.makeToast("当前暂无内容哦~")
+                        self?.view.makeToast("No content currently~")
                     }
                 } else {
-                   self?.view.makeToast("获取房间列表失败")
+                   self?.view.makeToast("Failed to get room list")
                 }
             })
         }) { [weak self] (code, error) in
             debugPrint(error)
             self?.roomsCollection.mj_header?.endRefreshing()
-            self?.view.makeToast("获取房间列表失败")
+            self?.view.makeToast("Failed to get room list")
         }
     }
     

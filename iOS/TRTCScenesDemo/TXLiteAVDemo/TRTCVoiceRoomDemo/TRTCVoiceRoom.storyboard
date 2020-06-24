@@ -3,7 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="2304" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -435,7 +435,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cug-Gc-G3I">
-                                <rect key="frame" x="91.5" y="64" width="192" height="50"/>
+                                <rect key="frame" x="61" y="64" width="253" height="50"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="voice_chatroom_1" translatesAutoresizingMaskIntoConstraints="NO" id="SJi-Ld-IxF">
                                         <rect key="frame" x="0.0" y="0.0" width="45" height="50"/>
@@ -444,8 +444,8 @@
                                             <constraint firstAttribute="width" constant="45" id="ORG-t1-1cm"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="语音聊天房" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4PQ-Pz-3YW">
-                                        <rect key="frame" x="65" y="10" width="127" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voice chat room" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4PQ-Pz-3YW">
+                                        <rect key="frame" x="65" y="10" width="188" height="30"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -461,8 +461,8 @@
                                     <constraint firstItem="4PQ-Pz-3YW" firstAttribute="centerY" secondItem="cug-Gc-G3I" secondAttribute="centerY" id="zDm-Wy-Iua"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="房间号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDN-uX-aqd">
-                                <rect key="frame" x="30" y="134" width="52" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDN-uX-aqd">
+                                <rect key="frame" x="30" y="134" width="108" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="IUi-WT-9ko"/>
                                 </constraints>
@@ -502,8 +502,8 @@
                                     <constraint firstAttribute="bottom" secondItem="cQz-nZ-JJa" secondAttribute="bottom" id="wvX-iC-bEZ"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDV-CD-2gs">
-                                <rect key="frame" x="30" y="224" width="52" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDV-CD-2gs">
+                                <rect key="frame" x="30" y="224" width="78.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="ZUR-Lj-Cw4"/>
                                 </constraints>
@@ -545,7 +545,7 @@
                                     <constraint firstAttribute="trailing" secondItem="xTQ-8j-Vz0" secondAttribute="trailing" id="nyT-Se-bo4"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户角色" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Xs-W8-0Qe">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User role" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Xs-W8-0Qe">
                                 <rect key="frame" x="30" y="314" width="100" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="A5q-ih-4Au"/>
@@ -556,12 +556,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z0R-BH-s5o">
-                                <rect key="frame" x="30" y="349" width="162" height="20"/>
+                                <rect key="frame" x="30" y="349" width="154" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="IwS-z8-x2i"/>
                                 </constraints>
-                                <state key="normal" title="主播(可发言)" image="select_off"/>
-                                <state key="selected" title="主播(可发言)" image="select_on">
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="Host (can speak)" image="select_off"/>
+                                <state key="selected" image="select_on">
                                     <color key="titleColor" red="0.28927958009999999" green="0.62306207420000004" blue="0.38926482200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -569,19 +570,20 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chF-Ub-nGD">
-                                <rect key="frame" x="183" y="349" width="162" height="20"/>
+                                <rect key="frame" x="148" y="349" width="197" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="grA-uB-rmQ"/>
                                 </constraints>
-                                <state key="normal" title="观众(仅收听)" image="select_off"/>
-                                <state key="selected" title="观众(仅收听)" image="select_on">
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="Audience (listening only)" image="select_off"/>
+                                <state key="selected" image="select_on">
                                     <color key="titleColor" red="0.28927958009999999" green="0.62306207420000004" blue="0.38926482200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="switchRole:" destination="DjO-yg-BE6" eventType="touchUpInside" id="6W0-AS-ZHs"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="音质选择" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQH-4A-4RL">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voice quality" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQH-4A-4RL">
                                 <rect key="frame" x="30" y="389" width="100" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Ka0-gw-24g"/>
@@ -592,13 +594,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iKm-CQ-hm3">
-                                <rect key="frame" x="40" y="547" width="295" height="50"/>
+                                <rect key="frame" x="40" y="517" width="295" height="50"/>
                                 <color key="backgroundColor" red="0.019607843137254902" green="0.65490196078431373" blue="0.39215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="zEJ-HD-xC4"/>
                                 </constraints>
                                 <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="加入房间">
+                                <state key="normal" title="Join the room">
                                     <color key="titleShadowColor" red="0.0039215686274509803" green="0.60784313725490191" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -611,12 +613,12 @@
                                     <action selector="onJoinBtnClicked:" destination="DjO-yg-BE6" eventType="touchUpInside" id="lrf-EB-d9T"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*若房间号不存在将自动创建并加入该房间" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XHI-mI-Cxc">
-                                <rect key="frame" x="20" y="617" width="335" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*If the room number does not exist, it will be automatically created and added to the room" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XHI-mI-Cxc">
+                                <rect key="frame" x="20" y="587" width="335" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="lnp-r7-yFB"/>
+                                    <constraint firstAttribute="height" constant="60" id="lnp-r7-yFB"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -629,9 +631,10 @@
                                             <constraint firstAttribute="width" constant="85" id="2Ve-eQ-Su5"/>
                                             <constraint firstAttribute="height" constant="20" id="cRM-TK-1Q8"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <inset key="titleEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="-15" minY="0.0" maxX="-15" maxY="0.0"/>
-                                        <state key="normal" title="语音" image="select_off"/>
+                                        <state key="normal" title="Voice" image="select_off"/>
                                         <state key="selected" image="select_on">
                                             <color key="titleColor" red="0.28927958009999999" green="0.62306207420000004" blue="0.38926482200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -640,14 +643,15 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2002" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8x-9L-kpG">
-                                        <rect key="frame" x="115" y="0.0" width="85" height="20"/>
+                                        <rect key="frame" x="107.5" y="0.0" width="100" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="85" id="bJo-rO-qLf"/>
+                                            <constraint firstAttribute="width" constant="100" id="bJo-rO-qLf"/>
                                             <constraint firstAttribute="height" constant="20" id="zKI-av-vrN"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <inset key="titleEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="-15" minY="0.0" maxX="-15" maxY="0.0"/>
-                                        <state key="normal" title="标准" image="select_off"/>
+                                        <state key="normal" title="Standard" image="select_off"/>
                                         <state key="selected" image="select_on">
                                             <color key="titleColor" red="0.28927958009999999" green="0.62306207420000004" blue="0.38926482200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -661,9 +665,10 @@
                                             <constraint firstAttribute="width" constant="85" id="dEn-WC-VK4"/>
                                             <constraint firstAttribute="height" constant="20" id="sxE-gr-hEA"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <inset key="titleEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="-15" minY="0.0" maxX="-15" maxY="0.0"/>
-                                        <state key="normal" title="音乐" image="select_off"/>
+                                        <state key="normal" title="Music" image="select_off"/>
                                         <state key="selected" image="select_on">
                                             <color key="titleColor" red="0.28927958009999999" green="0.62306207420000004" blue="0.38926482200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>

@@ -78,7 +78,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.title = [NSString stringWithFormat:@"房间号 %u",(unsigned int)self.param.roomId];
+    self.title = [NSString stringWithFormat:@"Room number %u",(unsigned int)self.param.roomId];
     self.micBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
     self.audioBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
     self.bgmBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -150,7 +150,7 @@
     //是否有麦克风权限
     AVAuthorizationStatus statusAudio = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio];
     if (statusAudio == AVAuthorizationStatusDenied) {
-        [self toastTip:@"获取麦克风权限失败，请前往隐私-麦克风设置里面打开应用权限"];
+        [self toastTip:@"Failed to obtain microphone permission, please go to privacy-microphone settings to open the application permission"];
         return;
     }
 #endif
@@ -181,7 +181,7 @@
         NSLog(@"TEST - volume: %@", @(user.volume));
         cell.cellVoiceBgView.alpha = user.volume < 30 ? 0 : 1;
     }else{
-        cell.cellUserLabel.text = @"虚位以待";
+        cell.cellUserLabel.text = @"Waiting";
         cell.cellImgView.image = [UIImage imageNamed:@"trtc_voice_placeholder"];
         cell.cellVoiceBgView.alpha = 0;
     }
@@ -196,14 +196,14 @@
     
     if (sender.selected) {          //切换为CDN播放
         [self.voiceRoomCloudManager exitRoom];
-        self.playStateLabel.text = @"CDN播放中";
+        self.playStateLabel.text = @"CDN playing";
         [remoteUserArray removeAllObjects];
         [_userColectionView reloadData];
         [self refreshUserCount];
         [self playWithCDN];
     } else {      //低延时播放
-        self.playStateLabel.text = @"低延时播放中";
-        self.user1Label.text = @"虚位以待";
+        self.playStateLabel.text = @"Low-latency playback";
+        self.user1Label.text = @"Waiting";
         self.userImg.image = nil;
         [remoteUserArray removeAllObjects];
         [_userColectionView reloadData];
@@ -222,9 +222,9 @@
 - (void)popAlert {
     NSString *str = @"";
     if (self.param.role == TRTCRoleAudience) {
-        str = @"上麦";
+        str = @"Audience";
     }else{
-        str = @"下麦";
+        str = @"Host";
     }
     __weak __typeof(self) weakself = self;
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
@@ -233,7 +233,7 @@
         [weakself switchRole];
     }]];
     //增加取消按钮；
-    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
     }]];
     [self presentViewController:alertController animated:true completion:nil];
 }
@@ -274,8 +274,8 @@
         
         [self.voiceRoomCloudManager switchRole:TRTCRoleAudience];
     }
-    [self toastTip:[NSString stringWithFormat:@"切换到%@身份",
-                    self.param.role == TRTCRoleAnchor ? @"主播" : @"观众"]];
+    [self toastTip:[NSString stringWithFormat:@"Switch to %@ identity",
+                    self.param.role == TRTCRoleAnchor ? @"Host" : @"Audience"]];
 }
 
 #pragma mark 根据角色刷新view
@@ -294,9 +294,9 @@
         [_moreBtn setImage:[UIImage imageNamed:@"more_off"] forState:UIControlStateNormal];
     } else if (type == TRTCRoleAudience){
         self.userImg.image = nil;
-        self.user1Label.text = @"虚位以待";
+        self.user1Label.text = @"Waiting";
         self.playStateLabel.hidden = NO;
-        self.playStateLabel.text = @"低延时播放中";
+        self.playStateLabel.text = @"Low-latency playback";
         self.switchPlayStateBtn.hidden = NO;
         self.switchPlayStateBtn.selected = NO;
         
@@ -329,9 +329,9 @@
             self.voiceBgView.alpha = 0;
         }
         [self toastTip:[NSString stringWithFormat:@"%@",
-                        _micBtn.selected ? @"您已关闭麦克风" : @"您已开启麦克风"]];
+                        _micBtn.selected ? @"You have turned off the microphone" : @"You have turned on the microphone"]];
     }else{
-        [self toastTip:@"主播才能操作哦!"];
+        [self toastTip:@"Only the anchor can operate!"];
     }
 }
 
@@ -349,7 +349,7 @@
         }
     }
     [self toastTip:[NSString stringWithFormat:@"%@",
-                    self.voiceRoomCloudManager.audioConfig.isSilent ? @"您已静音" : @"您已取消静音"]];
+                    self.voiceRoomCloudManager.audioConfig.isSilent ? @"You are muted" : @"You have been unmuted"]];
 }
 
 #pragma mark 点击背景音乐设置
@@ -358,7 +358,7 @@
         [self.bgmView show];
         self.bgmBtn.selected = YES;
     }else{
-        [self toastTip:@"主播才能操作哦!"];
+        [self toastTip:@"Only the host can operate!"];
     }
 }
 
@@ -379,9 +379,9 @@
                     weakSelf.bgmBtn.selected = YES;
                     weakSelf.bgmStateView.hidden = NO;
                     if (state == PLAY_LOCAL) {
-                        weakSelf.bgmLabel.text = @"本地音乐";
+                        weakSelf.bgmLabel.text = @"Local music";
                     }else if (state == PLAY_NET){
-                        weakSelf.bgmLabel.text = @"网络音乐";
+                        weakSelf.bgmLabel.text = @"Online music";
                     }
                 }
             }
@@ -395,7 +395,7 @@
     if (_param.role == TRTCRoleAnchor) {
         [self.audioEffectView show];
     }else{
-        [self toastTip:@"主播才能操作哦!"];
+        [self toastTip:@"Only the host can operate!"];
     }
 }
 
@@ -419,7 +419,7 @@
         [self.changeVoiceView show];
         self.voiceChangeBtn.selected = YES;
     }else{
-        [self toastTip:@"主播才能操作哦!"];
+        [self toastTip:@"Only the anchor can operate!"];
     }
 }
 
@@ -437,7 +437,7 @@
             }else{
                 weakSelf.voiceChangeBtn.selected = YES;
                 if ( ![weakSelf.voiceChangeLabel.text isEqualToString:state]) {
-                    [weakSelf toastTip:[NSString stringWithFormat:@"变声器已启用 %@ 特效",state]];
+                    [weakSelf toastTip:[NSString stringWithFormat:@"The voice changer has %@ effects enabled",state]];
                     weakSelf.voiceChangeLabel.text = state;
                     weakSelf.voiceChangeStateView.hidden = NO;
                 }
@@ -453,7 +453,7 @@
         [self.moreView show];
         self.moreBtn.selected = YES;
     }else{
-        [self toastTip:@"主播才能操作哦!"];
+        [self toastTip:@"Only the host can operate!"];
     }
 }
 
@@ -471,7 +471,7 @@
             }else{
                 //                weakSelf.moreBtn.selected = YES;
                 if ( ![weakSelf.reverbLabel.text isEqualToString:state]) {
-                    [weakSelf toastTip:[NSString stringWithFormat:@"混响已开启 %@ 效果",state]];
+                    [weakSelf toastTip:[NSString stringWithFormat:@"Reverb is on %@ effect",state]];
                     weakSelf.reverbLabel.text = state;
                     weakSelf.reverbStateView.hidden = NO;
                 }
@@ -524,11 +524,11 @@
         [UIApplication sharedApplication].applicationState != UIApplicationStateActive;
     
     if (!isStartingRecordInBackgroundError) {
-        NSString *msg = [NSString stringWithFormat:@"发生错误: %@ [%d]", errMsg, errCode];
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"已退房"
+        NSString *msg = [NSString stringWithFormat:@"An error occurred: %@ [%d]", errMsg, errCode];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Checked out"
                                                                                  message:msg
                                                                           preferredStyle:UIAlertControllerStyleAlert];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"确定"
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK"
                                                             style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * _Nonnull action) {
             [self.voiceRoomCloudManager exitRoom];
@@ -542,10 +542,10 @@
 - (void)onEnterRoom:(NSInteger)result {
     [self.loadingView stopAnimating];           //取消loading动画
     if (result >= 0) {
-        [self toastTip:[NSString stringWithFormat:@"进房成功"]];
+        [self toastTip:[NSString stringWithFormat:@"Successful entry"]];
     } else {
         [self.voiceRoomCloudManager exitRoom];
-        [self toastTip:[NSString stringWithFormat:@"进房失败: [%ld]", (long)result]];
+        [self toastTip:[NSString stringWithFormat:@"Failed to enter: [%ld]", (long)result]];
     }
     [self.voiceRoomCloudManager setSilent:self.audioBtn.selected];
 }
@@ -613,13 +613,13 @@
 - (void)onPlayEvent:(int)EvtID withParam:(NSDictionary *)param {
     if (EvtID == PLAY_EVT_PLAY_BEGIN) {
         [self.loadingView stopAnimating];
-        [self toastTip:@"CDN播放"];
+        [self toastTip:@"CDN playback"];
     } else if (EvtID == PLAY_EVT_PLAY_END){
         [self.loadingView stopAnimating];
-        [self toastTip:@"播放结束"];
+        [self toastTip:@"End of play"];
     } else if (EvtID < 0 ){
         [self.loadingView stopAnimating];
-        [self toastTip:[NSString stringWithFormat:@"播放失败  %d",EvtID]];
+        [self toastTip:[NSString stringWithFormat:@"Play failed  %d",EvtID]];
         [remoteUserArray removeAllObjects];
         [_userColectionView reloadData];
         [self refreshUserCount];

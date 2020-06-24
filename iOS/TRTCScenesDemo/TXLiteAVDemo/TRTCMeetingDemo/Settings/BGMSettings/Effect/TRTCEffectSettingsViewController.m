@@ -21,7 +21,7 @@
 @implementation TRTCEffectSettingsViewController
 
 - (NSString *)title {
-    return @"音效";
+    return @"Sound";
 }
 
 - (void)makeCustomRegistrition {
@@ -36,7 +36,7 @@
     
     __weak __typeof(self) wSelf = self;
     NSArray *otherItems = @[
-        [[TRTCSettingsSliderItem alloc] initWithTitle:@"全局音量"
+        [[TRTCSettingsSliderItem alloc] initWithTitle:@"Global volume"
                                                 value:100 min:0 max:100 step:1
                                            continuous:YES
                                                action:^(float value) {

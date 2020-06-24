@@ -77,7 +77,7 @@ class AudioCallMainViewController: UIViewController, TRTCAudioCallDelegate {
             ProfileManager.shared.queryUserInfo(userID: uid, success: { [weak self, weak vc] (UserModel) in
                 guard let self = self else {return}
                 vc?.enterUser(user: self.covertUser(user: UserModel, isEnter: true))
-                vc?.view.makeToast("\(UserModel.name) 进入通话")
+                vc?.view.makeToast("\(UserModel.name) Enter the call")
             }) { (error) in
                 
             }
@@ -115,7 +115,7 @@ class AudioCallMainViewController: UIViewController, TRTCAudioCallDelegate {
     func onCallingTimeOut() {
         debugPrint("📳 onCallingTimeOut")
         if let vc = callVC {
-            view.makeToast("通话超时")
+            view.makeToast("Call timeout")
             vc.disMiss()
         }
     }
@@ -168,16 +168,16 @@ class AudioCallMainViewController: UIViewController, TRTCAudioCallDelegate {
                 var toast = "\(userInfo.name)"
                 switch reason {
                 case .reject:
-                    toast += "拒绝了通话"
+                    toast += "Rejected the call"
                     break
                 case .leave:
-                    toast += "离开了通话"
+                    toast += "Leave the call"
                     break
                 case .noresp:
-                    toast += "未响应"
+                    toast += "Not responding"
                     break
                 case .busy:
-                    toast += "忙线"
+                    toast += "Busy Line"
                     break
                 }
                 vc?.view.makeToast(toast)

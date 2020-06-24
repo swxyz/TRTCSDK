@@ -162,7 +162,7 @@ TRTCLiveRoomDelegate>
     _noOwnerTip.backgroundColor = [UIColor clearColor];
     [_noOwnerTip setTextColor:[UIColor whiteColor]];
     [_noOwnerTip setTextAlignment:NSTextAlignmentCenter];
-    [_noOwnerTip setText:@"主播暂时不在线..."];
+    [_noOwnerTip setText:@"The host is temporarily offline..."];
     [self.view addSubview:_noOwnerTip];
     [_noOwnerTip setHidden:YES];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -281,7 +281,7 @@ TRTCLiveRoomDelegate>
             if (self == nil) {
                 return ;
             }
-            [self makeToastWithMessage:error.length > 0 ? error : @"进入房间失败"];
+            [self makeToastWithMessage:error.length > 0 ? error : @"Failed to enter the room"];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 //退房
                 [self closeVCWithRefresh:YES popViewController:YES];
@@ -304,7 +304,7 @@ TRTCLiveRoomDelegate>
     [_btnLinkMic setImage:[UIImage imageNamed:@"linkmic_off"] forState:UIControlStateNormal];
     [_btnLinkMic setEnabled:NO];
     
-    [self showWaitingNotice:@"等待主播接受"];
+    [self showWaitingNotice:@"Waiting for the host to accept"];
     
     [self.liveRoom requestJoinAnchorWithReason:@"" responseCallback:^(BOOL agreed, NSString * reason) {
         __strong __typeof(wself) self = wself;
@@ -320,7 +320,7 @@ TRTCLiveRoomDelegate>
         if (agreed) {
             self->_isBeingLinkMic = YES;
             [self->_btnLinkMic setImage:[UIImage imageNamed:@"linkmic_off"] forState:UIControlStateNormal];
-            [TCUtil toastTip:@"主播接受了您的连麦请求，开始连麦" parentView:self.view];
+            [TCUtil toastTip:@"The host accepted your Lianmai request and started mic" parentView:self.view];
             
             //推流允许前后切换摄像头
             self->_btnCamera.hidden = NO;
@@ -346,7 +346,7 @@ TRTCLiveRoomDelegate>
             if ([reason length] > 0) {
                 [TCUtil toastTip:reason parentView:self.view];
             } else {
-                [TCUtil toastTip:@"主播拒绝了您的连麦请求" parentView:self.view];
+                [TCUtil toastTip:@"The host rejected your mic request" parentView:self.view];
             }
         }
     }];
@@ -475,7 +475,7 @@ TRTCLiveRoomDelegate>
 - (void)onRoomDestroy:(NSString *)roomID {
     dispatch_async(dispatch_get_main_queue(), ^{
         NSLog(@"onRoomDestroy, roomID:%@", roomID);
-        [UIAlertView bk_showAlertViewWithTitle:@"大主播关闭直播间" message:nil cancelButtonTitle:@"确定" otherButtonTitles:nil handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        [UIAlertView bk_showAlertViewWithTitle:@"Big host closes live room" message:nil cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
             [self closeVCWithRefresh:YES popViewController:YES];
         }];
     });
@@ -486,7 +486,7 @@ TRTCLiveRoomDelegate>
         NSLog(@"onError:%d, %@", errCode, errMsg);
         if(errCode != 0){
             if (self->_isInVC) {
-                [UIAlertView bk_showAlertViewWithTitle:errMsg message:nil cancelButtonTitle:@"确定" otherButtonTitles:nil handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                [UIAlertView bk_showAlertViewWithTitle:errMsg message:nil cancelButtonTitle:@"OK" otherButtonTitles:nil handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
                     [self closeVCWithRefresh:YES popViewController:YES];
                 }];
             }else{
@@ -499,7 +499,7 @@ TRTCLiveRoomDelegate>
 
 
 - (void)onKickoutJoinAnchor {
-    [TCUtil toastTip:@"不好意思，您被主播踢开" parentView:self.view];
+    [TCUtil toastTip:@"Sorry, you were kicked off by the host" parentView:self.view];
     [self stopLocalPreview];
 }
 
@@ -624,7 +624,7 @@ TRTCLiveRoomDelegate>
 
 - (BOOL)checkPlayUrl:(NSString *)playUrl {
     if (!([playUrl hasPrefix:@"http:"] || [playUrl hasPrefix:@"https:"] || [playUrl hasPrefix:@"rtmp:"] )) {
-        [TCUtil toastTip:@"播放地址不合法，目前仅支持rtmp,flv,hls,mp4播放方式!" parentView:self.view];
+        [TCUtil toastTip:@"The playback address is illegal, currently only supports rtmp, flv, hls, mp4 playback methods!" parentView:self.view];
         return NO;
     }
     if (_isLivePlay) {
@@ -633,7 +633,7 @@ TRTCLiveRoomDelegate>
         } else if (([playUrl hasPrefix:@"https:"] || [playUrl hasPrefix:@"http:"]) && [playUrl rangeOfString:@".flv"].length > 0) {
             _playType = PLAY_TYPE_LIVE_FLV;
         } else{
-            [TCUtil toastTip:@"播放地址不合法，直播目前仅支持rtmp,flv播放方式!" parentView:self.view];
+            [TCUtil toastTip:@"The broadcast address is illegal. Live broadcast currently only supports rtmp and flv playback methods!" parentView:self.view];
             return NO;
         }
     } else {
@@ -645,12 +645,12 @@ TRTCLiveRoomDelegate>
             } else if ([playUrl rangeOfString:@".mp4"].length > 0){
                 _playType= PLAY_TYPE_VOD_MP4;
             } else {
-                [TCUtil toastTip:@"播放地址不合法，点播目前仅支持flv,hls,mp4播放方式!" parentView:self.view];
+                [TCUtil toastTip:@"The playback address is not legal, and VOD currently only supports flv, hls, mp4 playback!" parentView:self.view];
                 return NO;
             }
             
         } else {
-            [TCUtil toastTip:@"播放地址不合法，点播目前仅支持flv,hls,mp4播放方式!" parentView:self.view];
+            [TCUtil toastTip:@"The playback address is not legal, and VOD currently only supports flv, hls, mp4 playback!" parentView:self.view];
             return NO;
         }
     }
@@ -746,7 +746,7 @@ TRTCLiveRoomDelegate>
     [self closeVC:NO];
     if (!_isErrorAlert) {
         _isErrorAlert = YES;
-        [HUDHelper alert:@"直播已结束" cancel:@"确定" action:^{
+        [HUDHelper alert:@"Live broadcast has ended" cancel:@"OK" action:^{
             [self.navigationController popViewControllerAnimated:YES];
         }];
     }
@@ -773,19 +773,19 @@ TRTCLiveRoomDelegate>
         //检查麦克风权限
         AVAuthorizationStatus statusAudio = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio];
         if (statusAudio == AVAuthorizationStatusDenied) {
-            [TCUtil toastTip:@"获取麦克风权限失败，请前往隐私-麦克风设置里面打开应用权限" parentView:self.view];
+            [TCUtil toastTip:@"Failed to obtain microphone permission, please go to privacy-microphone settings to open the application permission" parentView:self.view];
             return;
         }
         
         //是否有摄像头权限
         AVAuthorizationStatus statusVideo = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
         if (statusVideo == AVAuthorizationStatusDenied) {
-            [TCUtil toastTip:@"获取摄像头权限失败，请前往隐私-相机设置里面打开应用权限" parentView:self.view];
+            [TCUtil toastTip:@"Failed to obtain camera permission, please go to privacy-camera settings to open application permission" parentView:self.view];
             return;
         }
         
         if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0) {
-            [TCUtil toastTip:@"系统不支持硬编码， 启动连麦失败" parentView:self.view];
+            [TCUtil toastTip:@"The system does not support hard coding, and the start of mic failed" parentView:self.view];
             return;
         }
         

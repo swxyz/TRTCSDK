@@ -49,7 +49,7 @@
 }
 
 - (NSArray<TCAudioScrollMenuCellModel *> *)createVoiceChangeDataSource{
-    NSArray *titleArray = @[@"原声", @"熊孩子", @"萝莉", @"大叔", @"重金属", @"感冒", @"外国人", @"困兽", @"死肥宅", @"强电流", @"重机械", @"空灵"];
+    NSArray *titleArray = @[@"Original", @"Bear child", @"Lolita", @"uncle", @"heavy metal", @"cold", @"alien", @"trapped Beast", @"dead fat House", @"strong current", @"heavy machinery", @"ethereal"];
     NSArray *iconNameArray = @[@"voiceChange_normal_close", @"voiceChange_xionghaizi", @"voiceChange_luoli", @"voiceChange_dashu", @"voiceChange_zhongjinshu", @"voiceChange_ganmao", @"voiceChange_waiguo", @"voiceChange_kunshou", @"voiceChange_feizhai", @"voiceChange_qiangdianliu", @"voiceChange_jixie", @"voiceChange_konglin"];
     NSArray *iconSelectedNameArray = @[@"voiceChange_normal_open", @"voiceChange_xionghaizi", @"voiceChange_luoli", @"voiceChange_dashu", @"voiceChange_zhongjinshu", @"voiceChange_ganmao", @"voiceChange_waiguo", @"voiceChange_kunshou", @"voiceChange_feizhai", @"voiceChange_qiangdianliu", @"voiceChange_jixie", @"voiceChange_konglin"];
     NSMutableArray *result = [[NSMutableArray alloc] initWithCapacity:2];
@@ -60,7 +60,7 @@
         TCAudioScrollMenuCellModel *model = [[TCAudioScrollMenuCellModel alloc] init];
         model.title = title;
         model.actionID = index;
-        if ([title isEqualToString:@"原声"]) {
+        if ([title isEqualToString:@"Original"]) {
             model.selected = YES;
         } else {
             model.selected = NO;
@@ -78,7 +78,7 @@
 }
 
 - (NSArray<TCAudioScrollMenuCellModel *> *)createReverberationDataSource{
-    NSArray *titleArray = @[@"无效果", @"KTV", @"小房间", @"大会堂", @"低沉", @"洪亮", @"金属声", @"磁性"];
+    NSArray *titleArray = @[@"No effect", @"KTV", @"small room", @"town hall", @"low", @"loud", @"metallic", @"magnetic"];
     NSArray *iconNameArray = @[@"Reverb_normal_close", @"Reverb_KTV", @"Reverb_literoom", @"Reverb_dahuitang", @"Reverb_dicheng", @"Reverb_hongliang", @"Reverb_zhongjinshu", @"Reverb_cixin"];
     NSArray *iconSelectedNameArray =  @[@"Reverb_normal_open", @"Reverb_KTV", @"Reverb_literoom", @"Reverb_dahuitang", @"Reverb_dicheng", @"Reverb_hongliang", @"Reverb_zhongjinshu", @"Reverb_cixin"];
     NSMutableArray *result = [[NSMutableArray alloc] initWithCapacity:2];
@@ -89,7 +89,7 @@
         TCAudioScrollMenuCellModel *model = [[TCAudioScrollMenuCellModel alloc] init];
         model.actionID = index;
         model.title = title;
-        if ([title isEqualToString:@"无效果"]) {
+        if ([title isEqualToString:@"No effect"]) {
             model.selected = YES;
         } else {
             model.selected = NO;
@@ -109,18 +109,18 @@
 - (NSArray<TCMusicSelectedModel *> *)createMusicDataSources {
     NSArray* musicsData = @[
         @{
-            @"name": @"环绕声测试1",
-            @"singer": @"佚名",
+            @"name": @"SoundTest1",
+            @"singer": @"Anonymous",
             @"url": @"http://dldir1.qq.com/hudongzhibo/LiteAV/demomusic/testmusic1.mp3"
         },
         @{
-            @"name": @"环绕声测试2",
-            @"singer": @"佚名",
+            @"name": @"SoundTest2",
+            @"singer": @"Anonymous",
             @"url": @"http://dldir1.qq.com/hudongzhibo/LiteAV/demomusic/testmusic2.mp3"
         },
         @{
-            @"name": @"环绕声测试3",
-            @"singer": @"佚名",
+            @"name": @"SoundTest3",
+            @"singer": @"Anonymous",
             @"url": @"http://dldir1.qq.com/hudongzhibo/LiteAV/demomusic/testmusic3.mp3"
         }
     ];
@@ -136,7 +136,7 @@
         model.isLocal = NO;
         
         model.action = ^(BOOL isSelected){
-            NSLog(@"选择了音乐%@", dic[@"name"]);
+            NSLog(@"Selected music %@", dic[@"name"]);
             [weakSelf stopPlay];
             [weakSelf playMusicWithPath:dic[@"url"] bgmID:1000 + index];
         };

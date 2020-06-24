@@ -122,7 +122,7 @@
 }
 
 + (NSArray<NSString *> *)localMirrorTypeNames {
-    return @[@"自动", @"开启", @"关闭"];
+    return @[@"Automatic", @"On", @"Off"];
 }
 
 + (TRTCBitrateRange *)bitrateRangeOf:(TRTCVideoResolution)resolution scene:(TRTCAppScene)scene {

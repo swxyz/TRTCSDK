@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh_CN</string>
 	<key>CFBundleDisplayName</key>
-	<string>腾讯云TRTC</string>
+	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIconName</key>
@@ -26,6 +26,8 @@
 	<string>100</string>
 	<key>IMSDKCrashReporterEnable</key>
 	<false/>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -34,15 +36,15 @@
 		<true/>
 	</dict>
 	<key>NSAppleMusicUsageDescription</key>
-	<string>视频云TRTC需要访问你的媒体库权限以获取音乐，不允许则无法添加音乐</string>
+	<string>The video cloud TRTC needs access to your media library to get music, if you don’t allow it, you can’t add music</string>
 	<key>NSCameraUsageDescription</key>
-	<string>视频云TRTC需要访问你的相机权限，开启后录制的视频才会有画面</string>
+	<string>The video cloud TRTC needs access to your camera permissions, and the video recorded after opening will have a picture</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>视频云TRTC需要访问你的麦克风权限，开启后录制的视频才会有声音</string>
+	<string>The video cloud TRTC needs access to your microphone permissions, and the video recorded after opening will have sound</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>视频云TRTC需要访问你的相册权限，开启后才能保存编辑的文件</string>
+	<string>The video cloud TRTC needs permission to access your album, and the edited file can be saved only after opening</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>视频云工具包需要访问你的相册权限，开启后才能编辑视频文件</string>
+	<string>The Video Cloud Toolkit requires access to your album permissions before you can edit video files</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
@@ -55,6 +57,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIRequiresFullScreen</key>
+	<false/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

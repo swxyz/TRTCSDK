@@ -71,11 +71,11 @@
         _tap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickScreen:)];
         [self addGestureRecognizer:_tap];
         // FIXME: - 这里的手势和音效页有冲突，暂时屏蔽了。
-        _audioEffectArry = [NSMutableArray arrayWithObjects:@"原声", @"KTV", @"房间", @"会堂", @"低沉", @"洪亮", @"金属", @"磁性", nil];
+        _audioEffectArry = [NSMutableArray arrayWithObjects:@"Acoustic", @"KTV", @"Room", @"Auditorium", @ "Low", @ "Loud", @ "Metal", @ " Magnetic", nil];
         _audioEffectViewArry = [NSMutableArray arrayWithCapacity:_audioEffectArry.count];
         _audioEffectSelectedType = 0;
         
-        _audioEffectArry2 = [NSMutableArray arrayWithObjects:@"原声", @"熊孩子", @"萝莉", @"大叔", @"重金属", @"感冒", @"外国人", @"困兽", @"死肥仔", @"强电流", @"重机械", @"空灵", nil];
+        _audioEffectArry2 = [NSMutableArray arrayWithObjects:@"soundtrack", @"bear child", @ "lolita", @"uncle", @"heavy metal", @"cold", @ "alien", @"trapped Beast", @"dead fat", @ "strong current", @"heavy machinery", @"ethereal", nil];
         _audioEffectViewArry2 = [NSMutableArray arrayWithCapacity:_audioEffectArry2.count];
         _audioEffectSelectedType2 = 0;
         
@@ -222,8 +222,8 @@
     
     UIButton *sendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     sendBtn.frame = CGRectMake(self.width - 15 - MSG_TEXT_SEND_BTN_WIDTH, (_msgInputView.height - MSG_TEXT_SEND_FEILD_HEIGHT)/2, MSG_TEXT_SEND_BTN_WIDTH, MSG_TEXT_SEND_FEILD_HEIGHT);
-    [sendBtn setTitle:@"发送" forState:UIControlStateNormal];
-    [sendBtn.titleLabel setFont:[UIFont systemFontOfSize:16]];
+    [sendBtn setTitle:@"Send" forState:UIControlStateNormal];
+    [sendBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [sendBtn setTitleColor:UIColorFromRGB(0x0ACCAC) forState:UIControlStateNormal];
     [sendBtn setBackgroundColor:[UIColor clearColor]];
     [sendBtn addTarget:self action:@selector(clickSend) forControlEvents:UIControlEventTouchUpInside];
@@ -237,7 +237,7 @@
     _msgInputFeild = [[UITextField alloc] initWithFrame:CGRectMake(msgInputFeildLine1.right + 10,sendBtn.y,msgInputFeildLine2.left - msgInputFeildLine1.right - 20,MSG_TEXT_SEND_FEILD_HEIGHT)];
     _msgInputFeild.backgroundColor = [UIColor clearColor];
     _msgInputFeild.returnKeyType = UIReturnKeySend;
-    _msgInputFeild.placeholder = @"和大家说点什么吧";
+    _msgInputFeild.placeholder = @"Say something to everyone";
     _msgInputFeild.delegate = self;
     _msgInputFeild.textColor = [UIColor blackColor];
     _msgInputFeild.font = [UIFont systemFontOfSize:14];
@@ -309,14 +309,14 @@
     [_btnSelectBGM.layer setMasksToBounds:YES];
     [_btnSelectBGM.layer setCornerRadius:6];
     [_btnSelectBGM.layer setBorderWidth:1.0];
-    [_btnSelectBGM setTitle:@"伴奏" forState:UIControlStateNormal];
+    [_btnSelectBGM setTitle:@"Accompaniment" forState:UIControlStateNormal];
     [_btnSelectBGM setTitleColor:UIColorFromRGB(0x0ACCAC) forState:UIControlStateNormal];
     [_btnSelectBGM addTarget:self action:@selector(clickMusicSelect:) forControlEvents:UIControlEventTouchUpInside];
     
     _btnStopBGM = [[UIButton alloc] init];
     _btnStopBGM.titleLabel.font = [UIFont systemFontOfSize:12.f];
     _btnStopBGM.layer.borderColor = UIColorFromRGB(0x0ACCAC).CGColor;;
-    [_btnStopBGM setTitle:@"结束" forState:UIControlStateNormal];
+    [_btnStopBGM setTitle:@"End" forState:UIControlStateNormal];
     [_btnStopBGM.layer setMasksToBounds:YES];
     [_btnStopBGM.layer setCornerRadius:6];
     [_btnStopBGM.layer setBorderWidth:1.0];
@@ -329,7 +329,7 @@
     _vAudioEffectPanel.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.5];
     
     _labVolumeForBGM = [[UILabel alloc] init];
-    [_labVolumeForBGM setText:@"伴奏音量"];
+    [_labVolumeForBGM setText:@"Accompaniment volume"];
     [_labVolumeForBGM setFont:[UIFont systemFontOfSize:12.f]];
     _labVolumeForBGM.textColor = UIColorFromRGB(0x0ACCAC);
     //    [_labVolumeForBGM sizeToFit];
@@ -345,7 +345,7 @@
     [_sldVolumeForBGM addTarget:self action:@selector(sliderValueChange:) forControlEvents:UIControlEventValueChanged];
     
     _labVolumeForVoice = [[UILabel alloc] init];
-    [_labVolumeForVoice setText:@"人声音量"];
+    [_labVolumeForVoice setText:@"Vocal volume"];
     [_labVolumeForVoice setFont:[UIFont systemFontOfSize:12.f]];
     _labVolumeForVoice.textColor = UIColorFromRGB(0x0ACCAC);
     //    [_labVolumeForVoice sizeToFit];
@@ -361,7 +361,7 @@
     [_sldVolumeForVoice addTarget:self action:@selector(sliderValueChange:) forControlEvents:UIControlEventValueChanged];
     
     _labPositionForBGM = [[UILabel alloc] init];
-    [_labPositionForBGM setText:@"伴奏快进"];
+    [_labPositionForBGM setText:@"Accompaniment fast forward"];
     [_labPositionForBGM setFont:[UIFont systemFontOfSize:12.f]];
     _labPositionForBGM.textColor = UIColorFromRGB(0x0ACCAC);
     
@@ -738,7 +738,7 @@
 
 #pragma mark TCAnchorToolbarDelegate
 - (void)closeVC {
-    _closeAlert = [[UIAlertView alloc] initWithTitle:nil message:@"当前正在直播，是否退出直播？"  delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    _closeAlert = [[UIAlertView alloc] initWithTitle:nil message:@"Currently live streaming, exit live?"  delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
     [_closeAlert show];
 }
 
@@ -864,7 +864,7 @@
             TCMsgModel *msgModel = [[TCMsgModel alloc] init];
             msgModel.userId = info.imUserId;
             msgModel.userName = info.imUserName;
-            msgModel.userMsg  =  @"加入直播";
+            msgModel.userMsg  =  @"Join the live stream";
             msgModel.userHeadImageUrl = info.imUserIconUrl;
             msgModel.msgType = TCMsgModelType_MemberEnterRoom;
             
@@ -882,7 +882,7 @@
             TCMsgModel *msgModel = [[TCMsgModel alloc] init];
             msgModel.userId = info.imUserId;
             msgModel.userName = info.imUserName;
-            msgModel.userMsg  =  @"退出直播";
+            msgModel.userMsg  =  @"Exit live broadcast";
             msgModel.userHeadImageUrl = info.imUserIconUrl;
             msgModel.msgType = TCMsgModelType_MemberQuitRoom;
             
@@ -895,7 +895,7 @@
         case TCMsgModelType_Praise: {
             TCMsgModel *msgModel = [[TCMsgModel alloc] init];
             msgModel.userName = [info imUserName];
-            msgModel.userMsg  =  @"点了个赞";
+            msgModel.userMsg  =  @"Liked";
             msgModel.userHeadImageUrl = info.imUserIconUrl;
             msgModel.msgType = TCMsgModelType_Praise;
             
@@ -940,12 +940,12 @@
     NSString *textMsg = [textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     if (textMsg.length <= 0) {
         textField.text = @"";
-        [HUDHelper alert:@"消息不能为空"];
+        [HUDHelper alert:@"Message can not be empty"];
         return YES;
     }
     
     TCMsgModel *msgModel = [[TCMsgModel alloc] init];
-    msgModel.userName = @"我";
+    msgModel.userName = @"Me";
     msgModel.userMsg  =  textMsg;
     msgModel.userHeadImageUrl = [[ProfileManager shared] curUserModel].avatar;
     
@@ -1086,9 +1086,9 @@
 
     _titleLabel = [[UILabel alloc] init];
     _titleLabel.textAlignment = NSTextAlignmentCenter;
-    _titleLabel.font = [UIFont boldSystemFontOfSize:24];
+    _titleLabel.font = [UIFont boldSystemFontOfSize:22];
     [_titleLabel setTextColor:[UIColor colorWithRed:10/255.0 green:204/255.0 blue:172/255.0 alpha:1]];
-    [_titleLabel setText:@"直播结束啦!"];
+    [_titleLabel setText:@"The live broadcast is over!"];
     [self addSubview:_titleLabel];
     
     
@@ -1103,7 +1103,7 @@
     _durationTipLabel.textAlignment = NSTextAlignmentCenter;
     _durationTipLabel.font = [UIFont boldSystemFontOfSize:14];
     _durationTipLabel.textColor = [UIColor whiteColor];
-    [_durationTipLabel setText:[NSString stringWithFormat:@"直播时长"]];
+    [_durationTipLabel setText:[NSString stringWithFormat:@"Live time"]];
     [self addSubview:_durationTipLabel];
     
     
@@ -1118,7 +1118,7 @@
     _viewerCountTipLabel.textAlignment = NSTextAlignmentCenter;
     _viewerCountTipLabel.font = [UIFont boldSystemFontOfSize:14];
     _viewerCountTipLabel.textColor = [UIColor whiteColor];
-    [_viewerCountTipLabel setText:[NSString stringWithFormat:@"观看人数"]];
+    [_viewerCountTipLabel setText:[NSString stringWithFormat:@"Viewers"]];
     [self addSubview:_viewerCountTipLabel];
     
     
@@ -1133,14 +1133,14 @@
     _praiseTipLabel.textAlignment = NSTextAlignmentCenter;
     _praiseTipLabel.font = [UIFont boldSystemFontOfSize:14];
     _praiseTipLabel.textColor = [UIColor whiteColor];
-    [_praiseTipLabel setText:[NSString stringWithFormat:@"获赞数量"]];
+    [_praiseTipLabel setText:[NSString stringWithFormat:@"Likes"]];
     [self addSubview:_praiseTipLabel];
     
     
     _backBtn = [[UIButton alloc] init];
     [_backBtn setBackgroundImage:[UIImage imageNamed:@"btn_back_to_main"] forState:UIControlStateNormal];
     _backBtn.titleLabel.font = [UIFont systemFontOfSize:16];
-    [_backBtn setTitle:@"返回首页" forState:UIControlStateNormal];
+    [_backBtn setTitle:@"Back" forState:UIControlStateNormal];
     [_backBtn setTitleColor:[UIColor colorWithRed:10/255.0 green:204/255.0 blue:172/255.0 alpha:1] forState:UIControlStateNormal];
     [self addSubview:_backBtn];
     

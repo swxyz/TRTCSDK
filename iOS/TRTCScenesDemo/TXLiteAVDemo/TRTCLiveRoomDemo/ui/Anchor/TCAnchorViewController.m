@@ -233,7 +233,7 @@
     _publishBtn = [[UIButton alloc] init];
     [_publishBtn setBackgroundColor:[UIColor appTint]];
     [[_publishBtn layer] setCornerRadius:8];
-    [_publishBtn setTitle:@"开始直播" forState:UIControlStateNormal];
+    [_publishBtn setTitle:@"START LIVE" forState:UIControlStateNormal];
     [[_publishBtn titleLabel] setFont:[UIFont systemFontOfSize:22]];
     [self.view addSubview:_publishBtn];
     [_publishBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -321,7 +321,7 @@
     [_roomName setTextColor:[UIColor whiteColor]];
     [_roomName setReturnKeyType:UIReturnKeyDone];
     [_roomName setFont:[UIFont boldSystemFontOfSize:22]];
-    [_roomName setAttributedPlaceholder:[[NSAttributedString alloc] initWithString:@"标题有趣能吸引人气" attributes:@{NSForegroundColorAttributeName : [UIColor colorWithWhite:0.8 alpha:1]}]];
+    [_roomName setAttributedPlaceholder:[[NSAttributedString alloc] initWithString:@"Enter live room title" attributes:@{NSForegroundColorAttributeName : [UIColor colorWithWhite:0.8 alpha:1]}]];
     [_createTopPanel addSubview:_roomName];
     [_roomName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(32);
@@ -333,13 +333,13 @@
     _roomName.delegate = self;
     
     UILabel *audioQualityLabel = [[UILabel alloc] init];
-    audioQualityLabel.text = @"直播音质";
-    audioQualityLabel.font = [UIFont systemFontOfSize:16];
+    audioQualityLabel.text = @"Live sound quality";
+    audioQualityLabel.font = [UIFont systemFontOfSize:13];
     audioQualityLabel.textColor = [UIColor whiteColor];
     audioQualityLabel.textAlignment = NSTextAlignmentCenter;
     [_createTopPanel addSubview:audioQualityLabel];
     [audioQualityLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(70);
+        make.width.mas_equalTo(120);
         make.height.mas_equalTo(32);
         make.leading.equalTo(_roomName);
         make.top.mas_equalTo(_roomName.mas_bottom).offset(6);
@@ -347,8 +347,8 @@
     
     _standardQualityButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_standardQualityButton setBackgroundColor:AUDIO_QUALITY_DEFAULT_COLOR];
-    [_standardQualityButton setTitle:@"标准" forState:UIControlStateNormal];
-    _standardQualityButton.titleLabel.font = [UIFont systemFontOfSize:15];
+    [_standardQualityButton setTitle:@"Standard" forState:UIControlStateNormal];
+    _standardQualityButton.titleLabel.font = [UIFont systemFontOfSize:12];
     _standardQualityButton.layer.cornerRadius = 8;
     [_standardQualityButton addTarget:self
                                action:@selector(onAudioQualityButtonClicked:)
@@ -363,8 +363,8 @@
     
     _musicQualityButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_musicQualityButton setBackgroundColor:AUDIO_QUALITY_SELECTED_COLOR];
-    [_musicQualityButton setTitle:@"音乐" forState:UIControlStateNormal];
-    _musicQualityButton.titleLabel.font = [UIFont systemFontOfSize:15];
+    [_musicQualityButton setTitle:@"Music" forState:UIControlStateNormal];
+    _musicQualityButton.titleLabel.font = [UIFont systemFontOfSize:12];
     _musicQualityButton.layer.cornerRadius = 8;
     [_musicQualityButton addTarget:self
                             action:@selector(onAudioQualityButtonClicked:)
@@ -428,7 +428,7 @@
         [_roomName resignFirstResponder];
     }
     if (_roomName.text.length <= 0) {
-        [self makeToastWithMessage:@"房间名不能为空"];
+        [self makeToastWithMessage:@"Room title can not be empty"];
         return;
     }
     __weak __typeof(self) weakSelf = self;
@@ -450,7 +450,7 @@
                 NSLog(@"%ld",(long)code);
             }];
         } else {
-            [self makeToastWithMessage:error.length > 0 ? error : @"创建房间失败"];
+            [self makeToastWithMessage:error.length > 0 ? error : @"Failed to create room"];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [self stopRtmp];
                 [self closeVC];
@@ -548,17 +548,17 @@
 
 - (void)onRequestJoinAnchor:(TRTCLiveUserInfo *)user reason:(NSString *)reason timeout: (double)timeout {
     if ([_setLinkMemeber count] >= MAX_LINKMIC_MEMBER_SUPPORT) {
-        [TCUtil toastTip:@"连麦请求拒绝，主播端连麦人数超过最大限制" parentView:self.view];
-        [self.liveRoom responseJoinAnchorWithUserID:user.userId agree:NO reason:@"主播端连麦人数超过最大限制"];
+        [TCUtil toastTip:@"The mic request was rejected, the number of people on the host side even exceeded the maximum limit" parentView:self.view];
+        [self.liveRoom responseJoinAnchorWithUserID:user.userId agree:NO reason:@"The number of people at the broadcaster exceeds the maximum limit"];
     }
     else if (_userIdRequest.length > 0) {
         if (![_userIdRequest isEqualToString:user.userId]) {
-            [TCUtil toastTip:@"连麦请求拒绝，主播正在处理其它人的连麦请求" parentView:self.view];
-            [self.liveRoom responseJoinAnchorWithUserID:user.userId agree:NO reason:@"请稍后，主播正在处理其它人的连麦请求"];
+            [TCUtil toastTip:@"The mic request rejected, the anchor is processing other people's Lianmai request" parentView:self.view];
+            [self.liveRoom responseJoinAnchorWithUserID:user.userId agree:NO reason:@"Please wait, the host is processing other people's mic requests"];
         }
     } else if (_curPkRoom != nil) {
-        [TCUtil toastTip:@"连麦请求拒绝，正在进行PK操作" parentView:self.view];
-        [self.liveRoom responseJoinAnchorWithUserID:user.userId agree:NO reason:@"请稍后，主播正在进行PK"];
+        [TCUtil toastTip:@"The mic request refused, PK operation in progress" parentView:self.view];
+        [self.liveRoom responseJoinAnchorWithUserID:user.userId agree:NO reason:@"Please wait, the anchor is doing PK"];
     }
     else {
         TCStatusInfoView * statusInfoView = [self getStatusInfoViewFrom:user.userId];
@@ -573,7 +573,7 @@
         }
         _userIdRequest = user.userId;
         curRequest = user;
-        UIAlertView* _alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:@"%@向您发起连麦请求", user.userName]  delegate:self cancelButtonTitle:@"拒绝" otherButtonTitles:@"接受", nil];
+        UIAlertView* _alertView = [[UIAlertView alloc] initWithTitle:@"Prompt" message:[NSString stringWithFormat:@"%@Initiate mic request from you", user.userName]  delegate:self cancelButtonTitle:@"Refuse" otherButtonTitles:@"Accept", nil];
         
         [_alertView show];
         
@@ -586,7 +586,7 @@
     if (_userIdRequest != nil && _userIdRequest.length > 0) {
         if (buttonIndex == 0) {
             //拒绝连麦
-            [self.liveRoom responseJoinAnchorWithUserID:curRequest.userId agree:NO reason:@"主播拒绝了您的连麦请求"];
+            [self.liveRoom responseJoinAnchorWithUserID:curRequest.userId agree:NO reason:@"The anchor rejected your mic request"];
         }
         else if (buttonIndex == 1) {
             //接受连麦
@@ -623,7 +623,7 @@
             [_setLinkMemeber removeObject:userID];
             [statusInfoView stopPlay];
             [statusInfoView emptyPlayInfo];
-            [TCUtil toastTip: [NSString stringWithFormat: @"%@连麦超时", userID] parentView:self.view];
+            [TCUtil toastTip: [NSString stringWithFormat: @"%@ mic timeout", userID] parentView:self.view];
         }
     }
 }
@@ -633,7 +633,7 @@
     if (alertView) {
         [alertView dismissWithClickedButtonIndex:0 animated:NO];
     }
-    [TCUtil toastTip: @"处理连麦请求超时" parentView:self.view];
+    [TCUtil toastTip: @"Timeout processing mic request" parentView:self.view];
 }
 
 - (NSString*) getLinkMicSessionID {
@@ -697,13 +697,13 @@
     self.curPkRoom = [[TRTCLiveRoomInfo alloc] init];
     self.curPkRoom.ownerId = user.userId;
     self.curPkRoom.ownerName = user.userName;
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"%@发起了PK请求",user.userName] message:nil preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"%@ PK request initiated",user.userName] message:nil preferredStyle:(UIAlertControllerStyleAlert)];
     __weak __typeof(self) weakSelf = self;
-    UIAlertAction *reject = [UIAlertAction actionWithTitle:@"拒绝" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *reject = [UIAlertAction actionWithTitle:@"Refuse" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
         [weakSelf linkFrameRestore];
-        [weakSelf.liveRoom responseRoomPKWithUserID:user.userId agree:NO reason:@"主播拒绝"];
+        [weakSelf.liveRoom responseRoomPKWithUserID:user.userId agree:NO reason:@"Host refused"];
     }];
-    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"接受" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Accept" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
         [weakSelf.liveRoom responseRoomPKWithUserID:user.userId agree:YES reason:@""];
     }];
     [alert addAction:reject];
@@ -714,7 +714,7 @@
 
 - (void)PKAlertCheck: (UIAlertController*)alert {
     if (alert.presentingViewController == self.navigationController) {
-        [TCUtil toastTip: [NSString stringWithFormat: @"处理%@PK超时", _curPkRoom.ownerName] parentView:self.view];
+        [TCUtil toastTip: [NSString stringWithFormat: @"Handle %@ PK timeout", _curPkRoom.ownerName] parentView:self.view];
         [alert dismissViewControllerAnimated:YES completion:nil];
         [self linkFrameRestore];
     }
@@ -812,7 +812,7 @@
 
 - (void)pkWithRoom:(TRTCLiveRoomInfo*)room {
     if (_setLinkMemeber.count > 0) {
-        [TCUtil toastTip:@"正在连麦中，请稍候尝试PK操作" parentView:self.view];
+        [TCUtil toastTip:@"Being mic，please try PK operation later" parentView:self.view];
         return;
     }
     
@@ -824,12 +824,12 @@
             return ;
         }
         if (accept) {
-            [TCUtil toastTip:[NSString stringWithFormat:@"%@已接受您的PK请求",room.ownerName] parentView:self.view];
+            [TCUtil toastTip:[NSString stringWithFormat:@"%@Your PK request is accepted",room.ownerName] parentView:self.view];
         } else {
             if (error.length > 0) {
                 [TCUtil toastTip: error parentView:self.view];
             } else {
-               [TCUtil toastTip:[NSString stringWithFormat:@"%@拒绝了您的PK请求",room.ownerName] parentView:self.view];
+               [TCUtil toastTip:[NSString stringWithFormat:@"%@ Denied your PK request",room.ownerName] parentView:self.view];
             }
             if (self->_roomStatus != TRTCLiveRoomLiveStatusRoomPK) {
                 self.curPkRoom = nil;

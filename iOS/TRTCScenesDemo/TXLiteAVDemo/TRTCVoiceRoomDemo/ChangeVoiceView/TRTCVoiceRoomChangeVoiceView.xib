@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="2304" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,8 +21,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iR3-Zr-QYb">
                     <rect key="frame" x="10" y="502" width="394" height="300"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="变声器设置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHf-Fi-u7Q">
-                            <rect key="frame" x="146" y="10" width="102" height="44"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voice settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHf-Fi-u7Q">
+                            <rect key="frame" x="136" y="10" width="122" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="szn-Hn-4DR"/>
                             </constraints>
@@ -36,7 +36,7 @@
                                 <constraint firstAttribute="height" constant="44" id="Fkp-JY-DLA"/>
                                 <constraint firstAttribute="width" constant="80" id="zeP-gy-4ig"/>
                             </constraints>
-                            <state key="normal" title="取消">
+                            <state key="normal" title="Cancel">
                                 <color key="titleColor" red="0.68627450980000004" green="0.68627450980000004" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
@@ -49,7 +49,7 @@
                                 <constraint firstAttribute="width" constant="80" id="Ilg-ZP-mSg"/>
                                 <constraint firstAttribute="height" constant="44" id="OyT-wd-I7g"/>
                             </constraints>
-                            <state key="normal" title="确定">
+                            <state key="normal" title="OK">
                                 <color key="titleColor" red="0.019607843140000001" green="0.65490196079999996" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>

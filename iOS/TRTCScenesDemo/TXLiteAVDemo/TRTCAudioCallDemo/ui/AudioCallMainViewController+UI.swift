@@ -13,7 +13,8 @@ extension AudioCallMainViewController {
     func setupUI() {
         ToastManager.shared.position = .bottom
         view.backgroundColor = .appBackGround
-        title = "语音通话"
+//        title = "语音通话"
+        title = "Voice calls"
         setupNoHistoryView()
     }
     
@@ -43,7 +44,7 @@ extension AudioCallMainViewController {
         newTip.textAlignment = .center
         newTip.numberOfLines = 2
         newTip.text = """
-                        点击上方按钮发起呼叫
+                        Click the upper button to initiate a call
                        """
         noHistoryView.addSubview(newTip)
         newTip.snp.makeConstraints { (make) in

@@ -20,7 +20,7 @@
 @implementation TRTCAudioSettingsViewController
 
 - (NSString *)title {
-    return @"音频";
+    return @"Audio";
 }
 
 - (void)viewDidLoad {
@@ -29,63 +29,63 @@
     TRTCAudioConfig *config = self.settingsManager.audioConfig;
     __weak __typeof(self) wSelf = self;
     
-    self.recordItem = [[TRTCSettingsButtonItem alloc] initWithTitle:@"音频录制"
-                                      buttonTitle:self.recordManager.isRecording ? @"停止" : @"录制"
+    self.recordItem = [[TRTCSettingsButtonItem alloc] initWithTitle:@"Audio recording"
+                                      buttonTitle:self.recordManager.isRecording ? @"Stop" : @"Record"
                                            action:^{
         [wSelf onClickRecordButton];
     }];
     
     self.items = @[
-        [[TRTCSettingsSegmentItem alloc] initWithTitle:@"音频采样率"
+        [[TRTCSettingsSegmentItem alloc] initWithTitle:@"Audio sampling rate"
                                                  items:@[@"48K", @"16K"]
                                          selectedIndex:config.sampleRate == 48000 ? 0 : 1
                                                 action:^(NSInteger index) {
             [wSelf onSelectSampleRateIndex:index];
         }],
-        [[TRTCSettingsSegmentItem alloc] initWithTitle:@"音量类型"
-                                                 items:@[@"自动", @"媒体", @"通话"]
+        [[TRTCSettingsSegmentItem alloc] initWithTitle:@"Volume type"
+                                                 items:@[@"Automatic", @"Media", @"Call"]
                                          selectedIndex:config.volumeType
                                                 action:^(NSInteger index) {
             [wSelf onSelectVolumeTypeIndex:index];
         }],
-        [[TRTCSettingsSliderItem alloc] initWithTitle:@"采集音量"
+        [[TRTCSettingsSliderItem alloc] initWithTitle:@"Acquisition volume"
                                                 value:self.settingsManager.captureVolume min:0 max:100 step:1
                                            continuous:YES
                                                action:^(float volume) {
             [wSelf onUpdateCaptureVolume:(NSInteger)volume];
         }],
-        [[TRTCSettingsSliderItem alloc] initWithTitle:@"播放音量"
+        [[TRTCSettingsSliderItem alloc] initWithTitle:@"Play volume"
                                                 value:self.settingsManager.playoutVolume min:0 max:100 step:1
                                            continuous:YES
                                                action:^(float volume) {
             [wSelf onUpdatePlayoutVolume:(NSInteger)volume];
         }],
-        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"自动增益"
+        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"Auto gain"
                                                  isOn:config.isAgcEnabled
                                                action:^(BOOL isOn) {
             [wSelf onEnableAgc:isOn];
         }],
-        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"噪音消除"
+        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"Noise cancellation"
                                                  isOn:config.isAnsEnabled
                                                action:^(BOOL isOn) {
             [wSelf onEnableAns:isOn];
         }],
-        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"开启耳返"
+        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"Turn on the ear"
                                                  isOn:config.isEarMonitoringEnabled
                                                action:^(BOOL isOn) {
             [wSelf onEnableEarMonitoring:isOn];
         }],
-        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"声音采集"
+        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"Sound collection"
                                                  isOn:config.isEnabled
                                                action:^(BOOL isOn) {
             [wSelf onEnableAudio:isOn];
         }],
-        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"免提模式"
+        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"Hands-free mode"
                                                  isOn:config.route == TRTCAudioModeSpeakerphone
                                                action:^(BOOL isOn) {
             [wSelf onEnableHandsFree:isOn];
         }],
-        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"音量提示"
+        [[TRTCSettingsSwitchItem alloc] initWithTitle:@"Volume prompt"
                                                  isOn:config.isVolumeEvaluationEnabled
                                                action:^(BOOL isOn) {
             [wSelf onEnableVolumeEvaluation:isOn];
@@ -146,7 +146,7 @@
     } else {
         [self.recordManager startRecord];
     }
-    self.recordItem.buttonTitle = self.recordManager.isRecording ? @"停止" : @"录制";
+    self.recordItem.buttonTitle = self.recordManager.isRecording ? @"Stop" : @"Record";
     [self.tableView reloadData];
 }
 

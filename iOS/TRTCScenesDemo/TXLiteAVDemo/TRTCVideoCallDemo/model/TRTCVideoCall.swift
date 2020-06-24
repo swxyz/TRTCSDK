@@ -158,18 +158,18 @@ public class TRTCVideoCall: NSObject,
                 param.busiId = timSdkBusiId
                 param.token = deviceToken
                 TIMManager.sharedInstance()?.setToken(param, succ: {
-                    debugPrint("-----> 上传 token 成功 ")
+                    debugPrint("-----> Upload token successfully ")
                     //推送声音的自定义化设置
                     let config = TIMAPNSConfig.init()
                     config.openPush = 0
                     config.c2cSound = "00.caf"
                     TIMManager.sharedInstance()?.setAPNS(config, succ: {
-                        debugPrint("-----> 设置 APNS 成功")
+                        debugPrint("-----> Successfully set up APNS")
                     }, fail: { (code, error) in
-                        debugPrint("-----> 设置 APNS 失败")
+                        debugPrint("-----> Failed to set APNS")
                     })
                 }, fail: { (code, error) in
-                    debugPrint("-----> 上传 token 失败 ")
+                    debugPrint("-----> Failed to upload token ")
                 })
             }
         }, fail: { [weak self] (code, errorDes) in

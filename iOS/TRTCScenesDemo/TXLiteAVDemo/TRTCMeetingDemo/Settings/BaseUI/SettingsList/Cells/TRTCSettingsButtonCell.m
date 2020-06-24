@@ -20,7 +20,7 @@
 - (void)setupUI {
     [super setupUI];
     
-    self.button = [UIButton trtc_cellButtonWithTitle:@"发送"];
+    self.button = [UIButton trtc_cellButtonWithTitle:@"Send"];
     [self.button addTarget:self action:@selector(onClickSendButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:self.button];
     [self.button mas_makeConstraints:^(MASConstraintMaker *make) {

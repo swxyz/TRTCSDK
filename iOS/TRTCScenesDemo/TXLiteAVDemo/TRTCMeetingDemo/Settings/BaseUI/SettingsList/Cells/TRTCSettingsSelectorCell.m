@@ -64,7 +64,7 @@
     for (NSString *item in selectorItem.items) {
         [alert addAction:[UIAlertAction actionWithTitle:item style:UIAlertActionStyleDefault handler:actionHandler]];
     }
-    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
     
     [self.tx_viewController presentViewController:alert animated:YES completion:nil];
 }
