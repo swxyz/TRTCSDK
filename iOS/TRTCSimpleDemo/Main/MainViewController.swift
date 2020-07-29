@@ -22,10 +22,23 @@ class MainViewController: UIViewController {
         presentStoryboard("Live")
     }
     
-    func presentStoryboard(_ name: String) {
+    @IBAction func onScreenClicked(_ sender: UIButton) {
+        jumpToScreenVC()
+    }
+    
+    @IBAction func onCustomCaptureClicked(_ sender: UIButton) {
+        presentStoryboard("CustomCapture", isLocalVideo: true)
+    }
+    
+    func presentStoryboard(_ name: String, isLocalVideo: Bool = false) {
         let storyboard = UIStoryboard.init(name: name, bundle: nil)
         guard let vc = storyboard.instantiateInitialViewController() else { return }
         navigationController?.pushViewController(vc, animated: true)
-    }
+}
     
+    @objc func jumpToScreenVC() {
+        let SEVC = ScreenEntranceViewController()
+        
+        self.navigationController?.pushViewController(SEVC, animated: true)
+    }
 }

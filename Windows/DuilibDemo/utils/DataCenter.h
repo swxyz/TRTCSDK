@@ -7,6 +7,7 @@
 
 class CConfigMgr;
 
+#define TRTCAudioQualityUnSelect 0
 
 typedef struct RemoteUserInfo
 {
@@ -148,7 +149,6 @@ public: //trtc
     uint32_t m_speakerVolume = 100;
     uint32_t m_audioCaptureVolume = 100; // 软件采集音量
     uint32_t m_audioPlayoutVolume = 100; // 软件播放音量（人声）
-
     //是否在room中
     bool m_bIsEnteredRoom = false;
 
@@ -168,7 +168,7 @@ public: //trtc
 
     bool m_bStartSystemVoice = false;
 
-    TRTCAudioQuality audio_quality_ = TRTCAudioQualityDefault;
+    int audio_quality_ = TRTCAudioQualityUnSelect;
 
 public: 
     //远端用户信息

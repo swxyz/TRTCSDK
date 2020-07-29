@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Oyw-0I-Rbq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Oyw-0I-Rbq">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,13 +11,13 @@
         <!--View Controller-->
         <scene sceneID="mCe-VM-nE1">
             <objects>
-                <viewController id="8Wc-go-NSg" customClass="RTCViewController" customModule="SimpleDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RTCViewController" id="8Wc-go-NSg" customClass="RTCViewController" customModule="SimpleDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xAz-mh-a2z">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zux-Ec-ScF">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4AK-3b-9tn">
@@ -65,7 +65,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhw-tC-F3X">
-                                <rect key="frame" x="132.5" y="597" width="40" height="40"/>
+                                <rect key="frame" x="132.5" y="617" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="IrA-4L-Cbq"/>
                                     <constraint firstAttribute="height" constant="40" id="Ne0-9K-1ZJ"/>
@@ -77,7 +77,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XXE-3u-2a7">
-                                <rect key="frame" x="62.5" y="597" width="40" height="40"/>
+                                <rect key="frame" x="62.5" y="617" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="38A-C6-Fr9"/>
                                     <constraint firstAttribute="width" constant="40" id="wmr-Dt-1De"/>
@@ -89,7 +89,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kw-N8-OFQ">
-                                <rect key="frame" x="202.5" y="597" width="40" height="40"/>
+                                <rect key="frame" x="202.5" y="617" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="fDK-fA-lQe"/>
                                     <constraint firstAttribute="width" constant="40" id="xFo-Sx-StW"/>
@@ -105,7 +105,7 @@
                                 <color key="backgroundColor" red="0.14117647059999999" green="0.14117647059999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NBk-01-Wqs">
-                                <rect key="frame" x="272.5" y="597" width="40" height="40"/>
+                                <rect key="frame" x="272.5" y="617" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="gca-cJ-Cav"/>
                                     <constraint firstAttribute="width" constant="40" id="iWM-5J-mBf"/>
@@ -163,8 +163,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="QGR-s2-cXX"/>
                     <connections>
+                        <outlet property="audioBtn" destination="qhw-tC-F3X" id="Ejt-Kj-sxE"/>
+                        <outlet property="debugBtn" destination="NBk-01-Wqs" id="c0W-Y9-5cj"/>
                         <outlet property="localVideoView" destination="Zux-Ec-ScF" id="p3Z-TP-efa"/>
+                        <outlet property="openCloseCameraBtn" destination="5kw-N8-OFQ" id="dvs-Oa-s1C"/>
                         <outlet property="roomIdLabel" destination="4AK-3b-9tn" id="iFb-na-dlV"/>
+                        <outlet property="switchCameraBtn" destination="XXE-3u-2a7" id="TH9-TS-nUb"/>
                         <outletCollection property="remoteVideoViews" destination="b3m-MG-uVe" collectionClass="NSMutableArray" id="1GC-D7-dzt"/>
                         <outletCollection property="remoteVideoViews" destination="Uk9-f0-3DN" collectionClass="NSMutableArray" id="Nqi-A1-DRt"/>
                         <outletCollection property="remoteVideoViews" destination="Al2-J5-gwp" collectionClass="NSMutableArray" id="pIw-4f-ghU"/>
@@ -235,7 +239,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="8Wc-go-NSg" kind="show" identifier="enterRTCRoom" id="jSb-6O-a2q"/>
+                                    <action selector="onEnterRoom:" destination="Oyw-0I-Rbq" eventType="touchUpInside" id="gwX-zK-YVr"/>
                                 </connections>
                             </button>
                         </subviews>

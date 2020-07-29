@@ -10,7 +10,7 @@ import Foundation
 
 public class TRTCVideoCall: NSObject,
                             ITRTCVideoCallInterface,
-                            TIMMessageListener {
+                            V2TIMAdvancedMsgListener {
     @objc public static let shared = TRTCVideoCall()
     private override init() {
         super.init()
@@ -22,7 +22,7 @@ public class TRTCVideoCall: NSObject,
     
     @objc public func destroy() {
         delegate = nil
-        TIMManager.sharedInstance()?.remove(self)
+        V2TIMManager.sharedInstance()?.remove(self)
     }
 
     /// 是否正在通话
@@ -134,14 +134,12 @@ public class TRTCVideoCall: NSObject,
                             success: @escaping (() -> Void),
                             failed: @escaping ((_ code: Int, _ message: String) -> Void)) {
         
-        let config = TIMSdkConfig.init()
-        config.sdkAppId = Int32(sdkAppID)
-        config.dbPath = NSHomeDirectory() + "/Documents/com_tencent_imsdk_data/"
-        TIMManager.sharedInstance()?.initSdk(config)
-        TIMManager.sharedInstance()?.add(self)
+        V2TIMManager.sharedInstance()?.initSDK(Int32(sdkAppID), config: nil, listener: nil)
+        V2TIMManager.sharedInstance()?.add(self)
 
-        if TIMManager.sharedInstance()?.getLoginUser() == user {
+        if V2TIMManager.sharedInstance()?.getLoginUser() == user {
             success()
+            setupAPNs()
             return
         }
 
@@ -150,9 +148,10 @@ public class TRTCVideoCall: NSObject,
         let loginParam = TIMLoginParam.init()
         loginParam.identifier = user
         loginParam.userSig = userSig
-        TIMManager.sharedInstance()?.login(loginParam, succ: {
+        V2TIMManager.sharedInstance()?.login(user, userSig: userSig, succ: { [weak self] in
             success()
             //设置 APNS
+<<<<<<< HEAD
             if let deviceToken = AppUtils.shared.appDelegate.deviceToken {
                 let param = TIMTokenParam.init()
                 param.busiId = timSdkBusiId
@@ -172,15 +171,32 @@ public class TRTCVideoCall: NSObject,
                     debugPrint("-----> Failed to upload token ")
                 })
             }
+=======
+            guard let `self` = self else { return }
+            self.setupAPNs()
+>>>>>>> upstream/master
         }, fail: { [weak self] (code, errorDes) in
             self?.delegate?.onError?(code: code, msg: errorDes)
             failed(Int(code), errorDes ?? "nil")
         })
     }
     
+    private func setupAPNs() {
+        if let deviceToken = AppUtils.shared.appDelegate.deviceToken {
+            let param = V2TIMAPNSConfig.init()
+            param.businessID = Int32(timSdkBusiId)
+            param.token = deviceToken
+            V2TIMManager.sharedInstance()?.setAPNS(param, succ: {
+                debugPrint("-----> 上传 token 成功 ")
+            }, fail: { (code, error) in
+                debugPrint("-----> 上传 token 失败 ")
+            })
+        }
+    }
+    
     @objc public func logout(success: @escaping (() -> Void),
                              failed: @escaping ((_ code: Int, _ message: String) -> Void)) {
-        TIMManager.sharedInstance()?.logout({
+        V2TIMManager.sharedInstance()?.logout({
             success()
         }, fail: { [weak self] (code, errorDes) in
             self?.delegate?.onError?(code: code, msg: errorDes)
@@ -282,18 +298,11 @@ public class TRTCVideoCall: NSObject,
                     /// 没有应答的人取消
                     sendModel(user: group, action: .sponsorCancel)
                 }
-                //挂断
-                sendModel(user: group, action: .hangup)
             }
         } else { // 1v1
             for user in curInvitingList {
                 /// 没有应答的人取消
                 sendModel(user: user, action: .sponsorCancel)
-            }
-            
-            if let user = curRoomList.first , curRoomList.count == 1 { // 1v1 hangup
-                //挂断
-                sendModel(user: user, action: .hangup)
             }
         }
         quitRoom()

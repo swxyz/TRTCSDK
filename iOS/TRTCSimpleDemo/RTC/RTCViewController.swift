@@ -25,13 +25,18 @@ class RTCViewController: UIViewController {
     @IBOutlet var remoteVideoViews: [UIView]!
     @IBOutlet var localVideoView: UIView!
     @IBOutlet var roomIdLabel: UILabel!
+    @IBOutlet weak var switchCameraBtn: UIButton!
+    @IBOutlet weak var openCloseCameraBtn: UIButton!
+    @IBOutlet weak var audioBtn: UIButton!
+    @IBOutlet weak var debugBtn: UIButton!
     
     var roomId: UInt32?
     var userId: String?
     
+    /// 从摄像头采样
     private var isFrontCamera: Bool = true
     private lazy var remoteUids = NSMutableOrderedSet.init(capacity: MAX_REMOTE_USER_NUM)
-    
+        
     private lazy var trtcCloud: TRTCCloud = {
         let instance: TRTCCloud = TRTCCloud.sharedInstance()
         ///设置TRTCCloud的回调接口
@@ -88,6 +93,10 @@ class RTCViewController: UIViewController {
         trtcCloud.startLocalPreview(isFrontCamera, view: localVideoView)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
+        
     deinit {
         TRTCCloud.destroySharedIntance()
     }
